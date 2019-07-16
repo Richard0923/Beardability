@@ -8,6 +8,10 @@ namespace E_Commerce.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Routes to the Home Page
+        /// </summary>
+        /// <returns>Home Page View</returns>
         public IActionResult Index()
         {
             return View();
