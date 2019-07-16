@@ -44,6 +44,12 @@ namespace E_Commerce
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
 
+            app.UseMvc(route =>
+            {
+                route.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
