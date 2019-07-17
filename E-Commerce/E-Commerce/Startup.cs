@@ -24,7 +24,6 @@ namespace E_Commerce
 
             var builder = new ConfigurationBuilder()
                 .AddEnvironmentVariables();
-            //Using user secrets upon startup
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
         }
@@ -49,7 +48,7 @@ namespace E_Commerce
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
+
             }
 
             app.UseMvcWithDefaultRoute();
