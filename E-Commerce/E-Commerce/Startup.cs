@@ -16,12 +16,14 @@ namespace E_Commerce
     {
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment environment)
         {
-            Configuration = configuration;
+            Environment = environment;
 
-            var builder = new ConfigurationBuilder();
+            var builder = new ConfigurationBuilder()
+                .AddEnvironmentVariables();
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
         }
@@ -32,8 +34,12 @@ namespace E_Commerce
         {
             services.AddMvc();
 
+            string ConnectionString = Environment.IsDevelopment()
+                ? Configuration.GetConnectionString("DefaultConnection")
+                : Configuration.GetConnectionString("ProductionConnection");
+
             services.AddDbContext<ECommDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(ConnectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
