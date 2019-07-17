@@ -56,6 +56,7 @@ namespace E_Commerce
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
+            //Registered Interfaces
             services.AddScoped<IInventory, InventoryManager>();
 
         }
