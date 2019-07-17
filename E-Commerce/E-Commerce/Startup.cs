@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce.Data;
 using E_Commerce.Models;
+using E_Commerce.Models.Interfaces;
+using E_Commerce.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,12 +39,15 @@ namespace E_Commerce
             services.AddDbContext<ECommDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
+
+            services.AddScoped<IInventory, InventoryManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
