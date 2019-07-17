@@ -21,6 +21,9 @@ namespace E_Commerce
         {
             Configuration = configuration;
 
+            var builder = new ConfigurationBuilder();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -39,6 +42,7 @@ namespace E_Commerce
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
 
             app.UseMvcWithDefaultRoute();
