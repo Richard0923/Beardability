@@ -38,19 +38,19 @@ namespace E_Commerce
         {
             services.AddMvc();
 
-            string ConnectionString = Environment.IsDevelopment()
-                ? Configuration.GetConnectionString("DefaultConnection")
-                : Configuration.GetConnectionString("ProductionConnection");
-
-            services.AddDbContext<ECommDbContext>(options =>
-            options.UseSqlServer(ConnectionString));
+            //string ConnectionString = Environment.IsDevelopment()
+            //    ? Configuration.GetConnectionString("DefaultConnection")
+            //    : Configuration.GetConnectionString("ProductionConnection");
 
             //services.AddDbContext<ECommDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseSqlServer(ConnectionString));
 
-            
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+            services.AddDbContext<ECommDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
