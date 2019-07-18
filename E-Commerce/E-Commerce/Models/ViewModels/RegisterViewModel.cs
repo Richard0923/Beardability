@@ -35,6 +35,6 @@ namespace E_Commerce.Models.ViewModels
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Confirmation password does not match")]
-        public string ConfirmPassword { get; set; }
+        public string PasswordConfirmation { get; set; }
     }
 }
