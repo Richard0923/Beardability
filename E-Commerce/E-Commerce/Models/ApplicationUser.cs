@@ -15,6 +15,8 @@ namespace E_Commerce.Models
         [Display(Name ="Last Name")]
         public string LastName { get; set; }
 
+        [Display(Name = "Date of Birth")]
+        public string DOB { get; set; }
 
     }
 }
