@@ -44,10 +44,6 @@ namespace E_Commerce
 
             services.AddDbContext<ECommDbContext>(options =>
             options.UseSqlServer(ConnectionString));
-
-            services.AddDbContext<ECommDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
