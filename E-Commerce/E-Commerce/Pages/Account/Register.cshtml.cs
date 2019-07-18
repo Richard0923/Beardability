@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using E_Commerce.Models;
+using Microsoft.AspNetCore.Identity;
+using E_Commerce.Models.ViewModels;
 
-
-namespace E_Commerce.wwwroot.Pages.Account
+namespace E_Commerce.Pages.Account
 {
     public class RegisterModel : PageModel
     {
@@ -56,12 +57,12 @@ namespace E_Commerce.wwwroot.Pages.Account
                 {
                     foreach (var error in result.Errors)
                     {
-                        ModelState.AddModelError("", error.Desciption);
+                        ModelState.AddModelError("", error.Description);
                     }
                 }
-
-                return Page();
             }
+
+            return Page();
         }
     }
 }
