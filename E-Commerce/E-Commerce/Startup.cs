@@ -38,9 +38,9 @@ namespace E_Commerce
         {
             services.AddMvc();
 
-            //string ConnectionString = Environment.IsDevelopment()
-            //    ? Configuration.GetConnectionString("DefaultConnection")
-            //    : Configuration.GetConnectionString("ProductionConnection");
+            string ConnectionString = Environment.IsDevelopment()
+                ? Configuration.GetConnectionString("DefaultConnection")
+                : Configuration.GetConnectionString("ProductionConnection");
 
             //services.AddDbContext<ECommDbContext>(options =>
             //options.UseSqlServer(ConnectionString));
