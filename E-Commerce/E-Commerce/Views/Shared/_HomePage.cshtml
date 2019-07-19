@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using E_Commerce.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+    </head>
+    <body>
+        <header>
+            <span style="float: right"> <a asp-page="/Account/Register"> Register Account </a> </span>
+            <span style="float: right"> <a asp-page="/Account/Login"> Login </a> </span>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+    </body>
+    </html>
