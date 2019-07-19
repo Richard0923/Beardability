@@ -16,7 +16,7 @@ namespace E_Commerce.Models
         public string LastName { get; set; }
 
         [Display(Name = "Date of Birth")]
-        public string DOB { get; set; }
+        public DateTime DOB { get; set; }
 
     }
 }
