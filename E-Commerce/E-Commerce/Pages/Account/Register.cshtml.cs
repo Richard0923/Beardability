@@ -52,7 +52,7 @@ namespace E_Commerce.Pages.Account
                 if(result.Succeeded)
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
-                    Claim dobClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.DOB.Year, user.DOB.Month, user.DOB.Day).ToString(), ClaimValueTypes.DateTime);
+                    Claim dobClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.DOB.Year, user.DOB.Month, user.DOB.Day).ToString("u"), ClaimValueTypes.DateTime);
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
                     Claim phoneClaim = new Claim(ClaimTypes.MobilePhone, user.PhoneNumber, ClaimValueTypes.String);
 

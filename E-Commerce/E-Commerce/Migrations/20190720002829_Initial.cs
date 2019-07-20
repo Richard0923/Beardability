@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace E_Commerce.Migrations.ApplicationDb
+namespace E_Commerce.Migrations
 {
-    public partial class GetApplicationDB : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,7 +43,7 @@ namespace E_Commerce.Migrations.ApplicationDb
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    DOB = table.Column<string>(nullable: true)
+                    DOB = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
