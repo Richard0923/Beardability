@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace E_Commerce.Models.ViewModels
 {
@@ -20,7 +21,7 @@ namespace E_Commerce.Models.ViewModels
         [Required]
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
-        public string DOB { get; set; }
+        public DateTime DOB { get; set; }
 
         [Required]
         [Display(Name = "Phone Number")]
