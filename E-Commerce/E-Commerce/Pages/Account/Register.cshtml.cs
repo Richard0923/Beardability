@@ -70,6 +70,14 @@ namespace E_Commerce.Pages.Account
                     claimsPrincipal.AddIdentity(claimsIdentity);
 
                     await _userManager.AddClaimsAsync(user, userClaims);
+
+                    if(user.Email.ToLower() == "admin@admin.com")
+                    {
+                        await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
+                    }
+
+                    await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
