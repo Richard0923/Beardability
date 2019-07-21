@@ -56,6 +56,12 @@ namespace E_Commerce
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy =>
+                policy.RequireRole(ApplicationRoles.Admin));
+            });
+
             //Registered Interfaces
             services.AddScoped<IInventory, InventoryManager>();
 
