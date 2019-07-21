@@ -19,4 +19,10 @@ namespace E_Commerce.Models
         public DateTime DOB { get; set; }
 
     }
+
+    public static class ApplicationRoles
+    {
+        public const string Member = "Member";
+        public const string Admin = "Admin";
+    }
 }
