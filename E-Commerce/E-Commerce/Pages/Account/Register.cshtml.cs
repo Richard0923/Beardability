@@ -35,7 +35,7 @@ namespace E_Commerce.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
@@ -49,23 +49,27 @@ namespace E_Commerce.Pages.Account
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
-
-                    Claim fullNameClaim = new Claim("Full Name", $"{user.FirstName} {user.LastName}");
-                    Claim DOBClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.DOB.Year, user.DOB.Month, user.DOB.Day).ToString("u"), ClaimValueTypes.DateTime);
+                    Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+                    Claim dobClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.DOB.Year, user.DOB.Month, user.DOB.Day).ToString("u"), ClaimValueTypes.DateTime);
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+                    Claim phoneClaim = new Claim(ClaimTypes.MobilePhone, user.PhoneNumber, ClaimValueTypes.String);
 
                     List<Claim> userClaims = new List<Claim>
                     {
                         fullNameClaim,
-                        DOBClaim,
-                        emailClaim
+                        dobClaim,
+                        emailClaim,
+                        phoneClaim
                     };
 
+                    ClaimsIdentity claimsIdentity = new ClaimsIdentity();
+                    claimsIdentity.AddClaims(userClaims);
+                    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
+                    claimsPrincipal.AddIdentity(claimsIdentity);
 
-
-
+                    await _userManager.AddClaimsAsync(user, userClaims);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
