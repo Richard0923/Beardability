@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using E_Commerce.Models;
 using Microsoft.AspNetCore.Identity;
 using E_Commerce.Models.ViewModels;
+using System.Security.Claims;
 
 namespace E_Commerce.Pages.Account
 {
@@ -50,6 +51,21 @@ namespace E_Commerce.Pages.Account
 
                 if(result.Succeeded)
                 {
+
+                    Claim fullNameClaim = new Claim("Full Name", $"{user.FirstName} {user.LastName}");
+                    Claim DOBClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.DOB.Year, user.DOB.Month, user.DOB.Day).ToString("u"), ClaimValueTypes.DateTime);
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    List<Claim> userClaims = new List<Claim>
+                    {
+                        fullNameClaim,
+                        DOBClaim,
+                        emailClaim
+                    };
+
+
+
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
