@@ -12,27 +12,27 @@ namespace E_Commerce.Models.Interfaces
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        Task CreateItem(InventoryItem item);
+        Task CreateItem(Product product);
 
         /// <summary>
         /// Selects an individual Inventory Item
         /// </summary>
         /// <param name="id">ID of the Item to be selected</param>
         /// <returns></returns>
-        Task<InventoryItem> GetItemByIDAsync(int id);
+        Task<Product> GetItemByIDAsync(int id);
 
         /// <summary>
         /// Creates a list of all the Inventory Items
         /// </summary>
         /// <returns></returns>
-        Task<List<InventoryItem>> GetAllItemsAsync();
+        Task<List<Product>> GetAllItemsAsync();
 
         /// <summary>
         /// Updates an Inventory Item
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        Task UpdateItemAsync(InventoryItem item);
+        Task UpdateItemAsync(Product product);
 
         /// <summary>
         /// Removes an Inventory Item
