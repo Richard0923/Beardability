@@ -19,6 +19,7 @@ namespace E_Commerce.Migrations.ApplicationDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+
             modelBuilder.Entity("E_Commerce.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
