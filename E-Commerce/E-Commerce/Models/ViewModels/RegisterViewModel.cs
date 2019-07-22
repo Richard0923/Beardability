@@ -5,7 +5,6 @@ namespace E_Commerce.Models.ViewModels
 {
     public class RegisterViewModel
     {
-
         [Required]
         [Display(Name ="Email")]
         [DataType(DataType.EmailAddress)]
