@@ -29,7 +29,7 @@ namespace E_Commerce.Migrations.ApplicationDb
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("DOB");
+                    b.Property<DateTime>("DOB");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190718184451_updating")]
-    partial class updating
+    [Migration("20190722075954_UpdateRoles")]
+    partial class UpdateRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,7 +31,7 @@ namespace E_Commerce.Migrations.ApplicationDb
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("DOB");
+                    b.Property<DateTime>("DOB");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
