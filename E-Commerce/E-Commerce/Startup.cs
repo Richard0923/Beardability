@@ -42,9 +42,6 @@ namespace E_Commerce
                 ? Configuration.GetConnectionString("DefaultConnection")
                 : Configuration.GetConnectionString("ProductionConnection");
 
-            //services.AddDbContext<ECommDbContext>(options =>
-            //options.UseSqlServer(ConnectionString));
-
             services.AddDbContext<ECommDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -55,6 +52,12 @@ namespace E_Commerce
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy =>
+                policy.RequireRole(ApplicationRoles.Admin));
+            });
 
             //Registered Interfaces
             services.AddScoped<IInventory, InventoryManager>();
