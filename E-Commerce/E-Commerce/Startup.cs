@@ -42,9 +42,6 @@ namespace E_Commerce
                 ? Configuration.GetConnectionString("DefaultConnection")
                 : Configuration.GetConnectionString("ProductionConnection");
 
-            //services.AddDbContext<ECommDbContext>(options =>
-            //options.UseSqlServer(ConnectionString));
-
             services.AddDbContext<ECommDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
