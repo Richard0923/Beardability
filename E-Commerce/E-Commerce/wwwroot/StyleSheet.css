@@ -1,0 +1,43 @@
+﻿body {
+    background-color:antiquewhite;
+}
+
+.loginTags{
+    margin-top: 20px;
+    margin-right:20px;
+    float:right;
+    display: inline-grid;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+.loggedIn {
+    margin-top: 20px;
+    margin-right: 20px;
+    float: right;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+#logoutButton{
+    grid-column: 2/3;
+    grid-row: 2;
+}
+
+.RegisterForm {
+    display: grid;
+    margin: 0;
+    width: 200px;
+}
+
+.loginForm {
+    display: grid;
+    margin: 0;
+    width: 200px;
+}
+
+
+
+
