@@ -1,5 +1,6 @@
 ﻿@page
 @model E_Commerce.Pages.Shop.ShoppingModel
+
 @{
     ViewData["Title"] = "Shopping";
 }
@@ -10,9 +11,14 @@
     </head>
     <body>
         <h1>Whole Lot</h1>
-        @foreach (var product in Products)
+        
+        @foreach (var product in Model.Beards)
         {
-
+        <div class="shopProduct">
+            <h3>@Html.DisplayFor(productitem => product.Name)</h3>
+            <img src="@Html.DisplayFor(productitem => product.Image)" />
+            <p>Price: $@Html.DisplayFor(productitem => product.Price)</p>
+        </div>
         }
     </body>
     </html>
