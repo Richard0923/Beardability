@@ -14,12 +14,15 @@
 
             @if (SignInManager.IsSignedIn(User))
             {
-                <div class="loggedIn">
-                    <span> Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value</span>
-                    <form id="logoutButton" asp-page="/Account/Logout">
-                        <button type="submit">Logout</button>
-                    </form>
-                </div>
+            <div class="loggedIn">
+                <span> Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value</span>
+                <a href="@Url.Action("Index", "Home")">Home</a>
+                <a href="@Url.Action("Shopping", "Shop")">Shop</a>
+
+                <form id="logoutButton" asp-page="/Account/Logout">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
             }
             else
             {
