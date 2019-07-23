@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Data;
 using E_Commerce.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,14 @@ namespace E_Commerce.Models.Services
     public class InventoryManager : IInventory
 
     {
-        private ApplicationDbContext _context;
+        private ECommDbContext _context;
 
-        public InventoryManager(ApplicationDbContext context)
+        public InventoryManager(ECommDbContext context)
         {
             _context = context;
         }
 
-        public Task CreateItem(InventoryItem item)
+        public Task CreateItem(Product product)
         {
             throw new NotImplementedException();
         }
@@ -27,17 +28,17 @@ namespace E_Commerce.Models.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<InventoryItem>> GetAllItemsAsync()
+        public async Task<List<Product>> GetAllItemsAsync()
+        {
+            return await _context.Products.ToListAsync();
+        }
+
+        public Task<Product> GetItemByIDAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<InventoryItem> GetItemByIDAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateItemAsync(InventoryItem item)
+        public Task UpdateItemAsync(Product product)
         {
             throw new NotImplementedException();
         }

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace E_Commerce.Migrations
+namespace E_Commerce.Migrations.ApplicationDb
 {
     public partial class Initial : Migration
     {
