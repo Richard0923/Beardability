@@ -12,5 +12,5 @@
 
  ## Deployed Site
 
- https://beardability.azurewebsites.net/
+ https://beardsrus.azurewebsites.net/ 
 
