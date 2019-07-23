@@ -13,10 +13,12 @@ namespace E_Commerce.Pages.Account
     public class LoginModel : PageModel
     {
         private SignInManager<ApplicationUser> _signInManager;
+        private UserManager<ApplicationUser> _userManager;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
 
@@ -36,7 +38,16 @@ namespace E_Commerce.Pages.Account
 
                 if (inputResult.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                    if (await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        // send them to the home page
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
