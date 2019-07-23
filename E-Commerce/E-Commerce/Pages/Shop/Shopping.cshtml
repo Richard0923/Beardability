@@ -1,20 +1,26 @@
 ﻿@page
 @model E_Commerce.Pages.Shop.ShoppingModel
+
 @{
     ViewData["Title"] = "Shopping";
 }
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Shopping</title>
-    </head>
-    <body>
-        <h1>Whole Lot</h1>
-        @*@foreach (var product in Products)
-        {
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Shopping</title>
+</head>
+<body>
+    <h1>Whole Lot</h1>
 
-        }*@
-    </body>
-    </html>
+    @foreach (var product in Model.Beards)
+    {
+        <div class="shopProduct">
+            <h3>@Html.DisplayFor(productitem => product.Name)</h3>
+            <img src="@Html.DisplayFor(productitem => product.Image)" />
+            <p>Price: $@Html.DisplayFor(productitem => product.Price)</p>
+        </div>
+    }
+</body>
+</html>
 
 
