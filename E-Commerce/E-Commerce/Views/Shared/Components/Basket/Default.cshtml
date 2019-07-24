@@ -1,0 +1,18 @@
+﻿@model IEnumerable<E_Commerce.Models.BasketItem>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Basket Items</title>
+</head>
+<body>
+    Hello! This is my View Component.
+    @foreach (var items in Model)
+    {
+        <h2>@items.Product</h2>
+        <p>@items.Quanity</p>
+    }
+</body>
+</html>

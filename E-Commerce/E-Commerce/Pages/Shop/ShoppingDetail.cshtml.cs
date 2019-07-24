@@ -25,5 +25,10 @@ namespace E_Commerce.Pages.Shop
         {
             Beard = await _context.GetItemByIDAsync(id);
         }
+
+        public void OnPost()
+        {
+            
+        }
     }
 }
