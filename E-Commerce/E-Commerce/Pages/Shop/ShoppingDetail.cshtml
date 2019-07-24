@@ -10,4 +10,8 @@
     <img src="@Html.DisplayFor(productitem =>  Model.Beard.Image)" />
     <p>@Html.DisplayFor(productitem => Model.Beard.Description)</p>
     <p>Price: $@Html.DisplayFor(productitem =>  Model.Beard.Price)</p>
+
+    <form class="basketButton" method="post">
+        <button type="submit">Add To Basket</button>
+    </form>
 </div>
