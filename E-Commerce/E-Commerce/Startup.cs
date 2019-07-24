@@ -42,12 +42,16 @@ namespace E_Commerce
                 ? Configuration.GetConnectionString("DefaultConnection")
                 : Configuration.GetConnectionString("ProductionConnection");
 
+            string UserConnectionString = Environment.IsDevelopment()
+                ? Configuration.GetConnectionString("UserConnection")
+                : Configuration.GetConnectionString("UserProductionConnection");
+
             services.AddDbContext<ECommDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(ConnectionString));
 
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+            options.UseSqlServer(UserConnectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -61,6 +65,7 @@ namespace E_Commerce
 
             //Registered Interfaces
             services.AddScoped<IInventory, InventoryManager>();
+            services.AddScoped<IBasket, BasketManager>();
 
         }
 

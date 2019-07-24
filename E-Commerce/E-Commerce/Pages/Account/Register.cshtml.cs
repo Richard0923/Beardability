@@ -8,6 +8,7 @@ using E_Commerce.Models;
 using Microsoft.AspNetCore.Identity;
 using E_Commerce.Models.ViewModels;
 using System.Security.Claims;
+using E_Commerce.Data;
 
 namespace E_Commerce.Pages.Account
 {
@@ -15,15 +16,17 @@ namespace E_Commerce.Pages.Account
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private ECommDbContext _context;
 
         [BindProperty]
         public RegisterViewModel Input { get; set; }
         public string ReturnUrl { get; set; }
 
-        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ECommDbContext context )
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         public void OnGet(string returnUrl = null)
@@ -79,6 +82,14 @@ namespace E_Commerce.Pages.Account
                     await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    //create a new basket and added it to the database 
+                    var basket = new Basket
+                    {
+                        Email = user.Email
+                    };
+                    await _context.Baskets.AddAsync(basket);
+                    await _context.SaveChangesAsync();
+
                     return LocalRedirect(returnUrl);
                 }
                 else
