@@ -40,7 +40,5 @@ namespace E_Commerce.Models.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task DeleteItem(int id);
-
-
     }
 }

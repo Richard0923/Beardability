@@ -42,5 +42,18 @@ namespace E_Commerce.Models.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task AddBasketItem(BasketItem basketItem)
+        {
+            _context.BasketItems.Add(basketItem);
+            await _context.SaveChangesAsync();
+        }
+
+        public IQueryable<Basket> FindBasketID(string email)
+        {
+           var basketEmail = _context.Baskets.Where(e => e.Email == email);
+            return basketEmail;
+        }
+
     }
 }
