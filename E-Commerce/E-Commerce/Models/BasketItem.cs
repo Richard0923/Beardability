@@ -16,7 +16,7 @@ namespace E_Commerce.Models
 
         //Foreign Key of Product to be saved in the DB
         [ForeignKey("Product")]
-        public int Product { get; set; }
+        public int ProductID { get; set; }
 
         //Number of Items desired by the user to buy
         public int Quanity { get; set; }

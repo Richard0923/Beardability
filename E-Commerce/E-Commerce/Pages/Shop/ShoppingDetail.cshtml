@@ -1,18 +1,20 @@
 ﻿@page
 @model E_Commerce.Pages.Shop.ShoppingDetailModel
 @{
+    var email = User.Identity.Name;
 }
 
 <div class="shopProduct">
-    <h3>@Html.DisplayFor(productitem => Model.Beard.Name)</h3>
-    <p>@Html.DisplayFor(productitem => Model.Beard.Sku)</p>
-    <img src="@Html.DisplayFor(productitem =>  Model.Beard.Image)" />
-    <p>@Html.DisplayFor(productitem => Model.Beard.Description)</p>
-    <p>Price: $@Html.DisplayFor(productitem =>  Model.Beard.Price)</p>
-
     <form class="basketButton" method="post">
-        @*<label asp-for="Quanity"></label>
-        <input asp-for="Quanity" />*@
+        <h3>@Html.DisplayFor(productitem => Model.Beard.Name)</h3>
+        <p>@Html.DisplayFor(productitem => Model.Beard.Sku)</p>
+        <img src="@Html.DisplayFor(productitem =>  Model.Beard.Image)" />
+        <p>@Html.DisplayFor(productitem => Model.Beard.Description)</p>
+        <p>Price: $@Html.DisplayFor(productitem => Model.Beard.Price)</p>
+
+
+        <label asp-for="BasketItem.Quanity"></label>
+        <input asp-for="BasketItem.Quanity" />
         <button type="submit">Add To Basket</button>
     </form>
 </div>
