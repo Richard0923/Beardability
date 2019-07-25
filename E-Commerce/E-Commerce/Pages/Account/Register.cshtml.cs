@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using E_Commerce.Models.ViewModels;
 using System.Security.Claims;
 using E_Commerce.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace E_Commerce.Pages.Account
 {
@@ -17,16 +18,18 @@ namespace E_Commerce.Pages.Account
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
         private ECommDbContext _context;
+        private IEmailSender _emailSender;
 
         [BindProperty]
         public RegisterViewModel Input { get; set; }
         public string ReturnUrl { get; set; }
 
-        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ECommDbContext context )
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ECommDbContext context, IEmailSender emailSender )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _emailSender = emailSender;
         }
 
         public void OnGet(string returnUrl = null)
@@ -81,8 +84,10 @@ namespace E_Commerce.Pages.Account
 
                     await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
 
+                    await _emailSender.SendEmailAsync(user.Email, "Welcome To BeardsRUs", "<p>Thank you for registering to BeardsRUs</p>");
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    //create a new basket and added it to the database 
+                    
                     var basket = new Basket
                     {
                         Email = user.Email
