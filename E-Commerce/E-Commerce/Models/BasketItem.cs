@@ -18,7 +18,16 @@ namespace E_Commerce.Models
         //[ForeignKey("Product")]
         public int ProductID { get; set; }
 
+        public string Name { get; set; }
+
+        public string Sku { get; set; }
+
+        public decimal Price { get; set; }
+
+        public string Image { get; set; }
+
         //Number of Items desired by the user to buy
         public int Quanity { get; set; }
     }
+
 }
