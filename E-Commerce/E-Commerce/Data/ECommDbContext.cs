@@ -155,6 +155,62 @@ namespace E_Commerce.Data
                 });
         }
 
+        //    modelBuilder.Entity<Basket>().HasData(
+
+        //        new Basket
+        //        {
+        //            ID = 1,
+
+        //            Email = "admin@admin.com"
+        //        });
+
+        //    modelBuilder.Entity<BasketItem>().HasData(
+
+        //        new BasketItem
+        //        {
+        //            ID = 1,
+
+        //            BasketID = 1,
+
+        //            ProductID = 1,
+
+        //            Quanity = 4,
+        //        },
+
+        //        new BasketItem
+        //        {
+        //            ID = 2,
+
+        //            BasketID = 1,
+
+        //            ProductID = 4,
+
+        //            Quanity = 2,
+        //        },
+
+        //        new BasketItem
+        //        {
+        //            ID = 3,
+
+        //            BasketID = 1,
+
+        //            ProductID = 5,
+
+        //            Quanity = 3,
+        //        },
+
+        //        new BasketItem
+        //        {
+        //            ID = 4,
+
+        //            BasketID = 1,
+
+        //            ProductID = 7,
+
+        //            Quanity = 8,
+        //        });
+        //}
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }

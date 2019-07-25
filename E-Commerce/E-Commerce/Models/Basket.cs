@@ -8,7 +8,7 @@ namespace E_Commerce.Models
 {
     public class Basket 
     {
-        [ForeignKey("UserID")]
+        //[ForeignKey("UserID")]
         public int ID { get; set; }
 
         public string Email { get; set; }

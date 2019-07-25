@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.Migrations
 {
     [DbContext(typeof(ECommDbContext))]
-    [Migration("20190724154204_itemsTables")]
-    partial class itemsTables
+    [Migration("20190725002725_tryANew")]
+    partial class tryANew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace E_Commerce.Migrations
 
                     b.Property<int>("BasketID");
 
-                    b.Property<int>("Product");
+                    b.Property<int>("ProductID");
 
                     b.Property<int>("Quanity");
 

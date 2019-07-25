@@ -9,17 +9,17 @@ namespace E_Commerce.Components
 {
     public class Basket : ViewComponent
     {
-        private IInventory _inventory;
+        private IBasket _basket;
 
-        public Basket(IInventory inventory)
+        public Basket(IBasket basket)
         {
-            _inventory = inventory;
+            _basket = basket;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(int number)
         {
-            var items = await _inventory.GetAllBasketItems();
-            var results = items.OrderByDescending(x => x.ID)
+            var items = await _basket.GetAllBasketItems();
+            var results = items.OrderByDescending(x => x.BasketID)
                                 .Take(number);
             return View(results);
         }
