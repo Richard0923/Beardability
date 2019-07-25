@@ -24,32 +24,37 @@ namespace E_Commerce.Pages.Shop
         }
         [BindProperty]
         public Product Beard { get; set; }
+
         [BindProperty]
         public BasketItem BasketItem { get; set; }
+
         public async Task OnGet(int id)
         {
             Beard = await _context.GetItemByIDAsync(id);
         }
 
-        public async Task OnPost()
+        public async Task OnPost(int id )
         {
+            Beard = await _context.GetItemByIDAsync(id);
+
             var user = User.Identity.Name;
             
             var userBasket = _basket.FindBasketID(user);
             
             if (ModelState.IsValid)
             {
-                BasketItem basketItem = new BasketItem
+                var basketItem = new BasketItem
                 {
                     ProductID = Beard.ID,
                     Quanity = BasketItem.Quanity,
                     BasketID = userBasket.ID,
-                    Name = BasketItem.Name,
-                    Sku = BasketItem.Sku,
-                    Price = BasketItem.Price,
-                    Image = BasketItem.Image
+                    Name = Beard.Name,
+                    Sku = Beard.Sku,
+                    Price = Beard.Price,
+                    Image = Beard.Image
                 };
                await _basket.CreateBasketItem(basketItem);
+               
             }
         }
     }
