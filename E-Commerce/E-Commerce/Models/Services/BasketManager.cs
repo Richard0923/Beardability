@@ -23,9 +23,12 @@ namespace E_Commerce.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteBasketItems(int id)
+        public async Task DeleteBasketItem(int basketItemId)
         {
-            throw new NotImplementedException();
+            BasketItem basketItem = await GetBasketById(basketItemId);
+            _context.BasketItems.Remove(basketItem);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<BasketItem>> GetAllBasketItems()
