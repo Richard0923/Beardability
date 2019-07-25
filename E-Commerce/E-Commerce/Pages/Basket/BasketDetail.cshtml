@@ -4,5 +4,25 @@
     ViewData["Title"] = "BasketDetail";
 }
 
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Basket</title>
+    </head>
+    <body>
+        <a href="@Url.Action("Index", "Home")">Home</a>
 
+        <h1>Basket</h1>
+
+        @foreach (var basketItem in Model.Basket)
+    {
+    <div class="basketItems">
+        <h3>@Html.DisplayFor(basketItem => basketItem.Name)</h3>
+        <img src="@Html.DisplayFor(basketItem => basketItem.Image)" />
+        <p>Price: $@Html.DisplayFor(basketItem => basketItem.Price)</p>
+        <p>Price: $@Html.DisplayFor(basketItem => basketItem.Quanity)</p>
+        <a asp-page="ShoppingDetail" asp-route-id="@product.ID">Details</a>
+    </div>
+    }
+    </body>
+    </html>
 
