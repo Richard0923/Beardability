@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Data;
 using E_Commerce.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,9 @@ namespace E_Commerce.Models.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<BasketItem>> GetAllBasketItems()
+        public async Task<List<BasketItem>> GetAllBasketItems()
         {
-            throw new NotImplementedException();
+            return await _context.BasketItems.ToListAsync();
         }
 
         public Task<BasketItem> GetBasketById(int id)

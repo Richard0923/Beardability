@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.Migrations
 {
     [DbContext(typeof(ECommDbContext))]
-    [Migration("20190724154204_itemsTables")]
-    partial class itemsTables
+    [Migration("20190725145130_addingdata")]
+    partial class addingdata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,13 @@ namespace E_Commerce.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Baskets");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Email = "admin@admin.com"
+                        });
                 });
 
             modelBuilder.Entity("E_Commerce.Models.BasketItem", b =>
@@ -41,15 +48,69 @@ namespace E_Commerce.Migrations
 
                     b.Property<int>("BasketID");
 
-                    b.Property<int>("Product");
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Name");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<int>("ProductID");
 
                     b.Property<int>("Quanity");
+
+                    b.Property<string>("Sku");
 
                     b.HasKey("ID");
 
                     b.HasIndex("BasketID");
 
                     b.ToTable("BasketItems");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            BasketID = 1,
+                            Image = "http://placebeard.it/g/100/125",
+                            Name = "Seed1",
+                            Price = 10.00m,
+                            ProductID = 1,
+                            Quanity = 4,
+                            Sku = "Seedy"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            BasketID = 1,
+                            Image = "http://placebeard.it/g/100/125",
+                            Name = "Seed2",
+                            Price = 20.00m,
+                            ProductID = 4,
+                            Quanity = 2,
+                            Sku = "Seedy"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            BasketID = 1,
+                            Image = "http://placebeard.it/g/100/125",
+                            Name = "Seed3",
+                            Price = 40.00m,
+                            ProductID = 5,
+                            Quanity = 3,
+                            Sku = "Seedy"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            BasketID = 1,
+                            Image = "http://placebeard.it/g/100/125",
+                            Name = "Seed4",
+                            Price = 10.00m,
+                            ProductID = 7,
+                            Quanity = 8,
+                            Sku = "Seedy"
+                        });
                 });
 
             modelBuilder.Entity("E_Commerce.Models.Product", b =>
@@ -66,8 +127,6 @@ namespace E_Commerce.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("Quanity");
-
                     b.Property<string>("Sku");
 
                     b.HasKey("ID");
@@ -82,7 +141,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Full Beard",
                             Price = 10.00m,
-                            Quanity = 0,
                             Sku = "001Bear"
                         },
                         new
@@ -92,7 +150,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Soul Patch",
                             Price = 2.00m,
-                            Quanity = 0,
                             Sku = "003Soul"
                         },
                         new
@@ -102,7 +159,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Old School Hook Beard",
                             Price = 10.00m,
-                            Quanity = 0,
                             Sku = "004Hook"
                         },
                         new
@@ -112,7 +168,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Long Fu-Man-Chu Mustache",
                             Price = 8.00m,
-                            Quanity = 0,
                             Sku = "005Fu"
                         },
                         new
@@ -122,7 +177,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Short Fu-Man-Chu Mustache",
                             Price = 5.00m,
-                            Quanity = 0,
                             Sku = "006FuS"
                         },
                         new
@@ -132,7 +186,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "5'oclock Shadow Spray",
                             Price = 15.00m,
-                            Quanity = 0,
                             Sku = "007Shadow"
                         },
                         new
@@ -142,7 +195,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Facial Glue",
                             Price = 5.00m,
-                            Quanity = 0,
                             Sku = "008Glue"
                         },
                         new
@@ -152,7 +204,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Facial Hair Comb",
                             Price = 5.00m,
-                            Quanity = 0,
                             Sku = "009Comb"
                         },
                         new
@@ -162,7 +213,6 @@ namespace E_Commerce.Migrations
                             Image = "http://placebeard.it/g/100/125",
                             Name = "Mutton Chops",
                             Price = 7.00m,
-                            Quanity = 0,
                             Sku = "010Chops"
                         });
                 });

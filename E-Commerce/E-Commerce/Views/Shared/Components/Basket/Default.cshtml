@@ -1,0 +1,20 @@
+﻿@model IEnumerable<E_Commerce.Models.BasketItem>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Basket Items</title>
+</head>
+<body>
+    Items in your Basket:
+    @foreach (var items in Model)
+    {
+        <h2>Name: @items.Name</h2>
+        <img src="@items.Image" />
+        <p>Price: @items.Price</p>
+        <p>Quanity: @items.Quanity</p>
+    }
+</body>
+</html>

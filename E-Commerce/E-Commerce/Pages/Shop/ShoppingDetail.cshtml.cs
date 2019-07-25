@@ -47,7 +47,6 @@ namespace E_Commerce.Pages.Shop
                 };
                await _basket.CreateBasketItem(basketItem);
             }
-            RedirectToPage("Shopping");
         }
     }
 }

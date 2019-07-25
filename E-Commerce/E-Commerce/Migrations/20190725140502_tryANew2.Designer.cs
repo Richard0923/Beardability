@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.Migrations
 {
     [DbContext(typeof(ECommDbContext))]
-    [Migration("20190724164437_basketemail")]
-    partial class basketemail
+    [Migration("20190725140502_tryANew2")]
+    partial class tryANew2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,13 @@ namespace E_Commerce.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Baskets");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Email = "admin@admin.com"
+                        });
                 });
 
             modelBuilder.Entity("E_Commerce.Models.BasketItem", b =>
@@ -50,6 +57,36 @@ namespace E_Commerce.Migrations
                     b.HasIndex("BasketID");
 
                     b.ToTable("BasketItems");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            BasketID = 1,
+                            ProductID = 1,
+                            Quanity = 4
+                        },
+                        new
+                        {
+                            ID = 2,
+                            BasketID = 1,
+                            ProductID = 4,
+                            Quanity = 2
+                        },
+                        new
+                        {
+                            ID = 3,
+                            BasketID = 1,
+                            ProductID = 5,
+                            Quanity = 3
+                        },
+                        new
+                        {
+                            ID = 4,
+                            BasketID = 1,
+                            ProductID = 7,
+                            Quanity = 8
+                        });
                 });
 
             modelBuilder.Entity("E_Commerce.Models.Product", b =>

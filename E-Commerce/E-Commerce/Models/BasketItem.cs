@@ -11,14 +11,23 @@ namespace E_Commerce.Models
         public int ID { get; set; }
 
         //Foreign Key of the Basket associated with
-        [ForeignKey("Basket")]
+        //[ForeignKey("Basket")]
         public int BasketID { get; set; }
 
         //Foreign Key of Product to be saved in the DB
-        [ForeignKey("Product")]
+        //[ForeignKey("Product")]
         public int ProductID { get; set; }
+
+        public string Name { get; set; }
+
+        public string Sku { get; set; }
+
+        public decimal Price { get; set; }
+
+        public string Image { get; set; }
 
         //Number of Items desired by the user to buy
         public int Quanity { get; set; }
     }
+
 }

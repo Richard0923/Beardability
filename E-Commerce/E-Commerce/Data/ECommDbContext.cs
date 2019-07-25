@@ -153,6 +153,95 @@ namespace E_Commerce.Data
 
                     Image = "http://placebeard.it/g/100/125"
                 });
+
+
+            modelBuilder.Entity<Basket>().HasData(
+
+                new Basket
+                {
+                    ID = 1,
+
+                    Email = "admin@admin.com"
+                });
+
+            modelBuilder.Entity<BasketItem>().HasData(
+
+                new BasketItem
+                {
+                    ID = 1,
+
+                    BasketID = 1,
+                    
+                    Name = "Seed1",
+
+                    Sku = "Seedy",
+
+                    Image = "http://placebeard.it/g/100/125",
+
+                    Price = 10.00M,
+
+                    ProductID = 1,
+
+                    Quanity = 4,
+                },
+
+                new BasketItem
+                {
+                    ID = 2,
+
+                    BasketID = 1,
+
+                    Name = "Seed2",
+
+                    Sku = "Seedy",
+
+                    Image = "http://placebeard.it/g/100/125",
+
+                    Price = 20.00M,
+
+
+                    ProductID = 4,
+
+                    Quanity = 2,
+                },
+
+                new BasketItem
+                {
+                    ID = 3,
+
+                    BasketID = 1,
+
+                    Name = "Seed3",
+
+                    Sku = "Seedy",
+
+                    Image = "http://placebeard.it/g/100/125",
+
+                    Price = 40.00M,
+
+                    ProductID = 5,
+
+                    Quanity = 3,
+                },
+
+                new BasketItem
+                {
+                    ID = 4,
+
+                    BasketID = 1,
+
+                    Name = "Seed4",
+
+                    Sku = "Seedy",
+
+                    Image = "http://placebeard.it/g/100/125",
+
+                    Price = 10.00M,
+
+                    ProductID = 7,
+
+                    Quanity = 8,
+                });
         }
 
         public DbSet<Product> Products { get; set; }

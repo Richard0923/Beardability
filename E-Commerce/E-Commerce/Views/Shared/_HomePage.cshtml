@@ -18,6 +18,7 @@
                 <span> Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value</span>
                 <a href="@Url.Action("Index", "Home")">Home</a>
                 <a href="@Url.Action("Shopping", "Shop")">Shop</a>
+                <a href="@Url.Action("Default", "Basket")">Basket</a>
 
                 <form id="logoutButton" asp-page="/Account/Logout">
                     <button type="submit">Logout</button>
