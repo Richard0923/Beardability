@@ -8,23 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\**" />
-    <Content Remove="Migrations\**" />
-    <EmbeddedResource Remove="Migrations\**" />
-    <None Remove="Migrations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Migrations\20190725002725_tryANew.cs" />
-    <Compile Include="Migrations\20190725002725_tryANew.Designer.cs" />
-    <Compile Include="Migrations\20190725140502_tryANew2.cs" />
-    <Compile Include="Migrations\20190725140502_tryANew2.Designer.cs" />
-    <Compile Include="Migrations\20190725145130_addingdata.cs" />
-    <Compile Include="Migrations\20190725145130_addingdata.Designer.cs" />
-    <Compile Include="Migrations\ECommDbContextModelSnapshot.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Pages\Account\Register.cshtml.cs" />
   </ItemGroup>
 
