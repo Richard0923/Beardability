@@ -45,7 +45,7 @@ namespace E_Commerce.Models.Services
 
        public Basket FindBasketID(string email)
         {
-            var basket = _context.Baskets.FirstOrDefault(e => e.Email == email);
+            Basket basket = _context.Baskets.FirstOrDefault(e => e.Email == email);
             return basket;
         }
     }

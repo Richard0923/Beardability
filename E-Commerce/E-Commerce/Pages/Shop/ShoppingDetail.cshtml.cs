@@ -39,11 +39,15 @@ namespace E_Commerce.Pages.Shop
             
             if (ModelState.IsValid)
             {
-                var basketItem = new BasketItem
+                BasketItem basketItem = new BasketItem
                 {
                     ProductID = Beard.ID,
                     Quanity = BasketItem.Quanity,
-                    BasketID = userBasket.ID
+                    BasketID = userBasket.ID,
+                    Name = BasketItem.Name,
+                    Sku = BasketItem.Sku,
+                    Price = BasketItem.Price,
+                    Image = BasketItem.Image
                 };
                await _basket.CreateBasketItem(basketItem);
             }
