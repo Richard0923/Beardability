@@ -31,6 +31,10 @@ namespace E_Commerce.Pages.Basket
             List<BasketItem> basketItems = await _basketList.GetAllBasketItems();
         }
 
+        //public async Task OnPut(BasketItem basketItem)
+        //{
+            
+        //}
 
     }
 }
