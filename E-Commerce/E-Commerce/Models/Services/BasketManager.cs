@@ -23,9 +23,12 @@ namespace E_Commerce.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteBasketItems(int id)
+        public async Task DeleteBasketItem(int basketItemId)
         {
-            throw new NotImplementedException();
+            BasketItem basketItem = await GetBasketItemById(basketItemId);
+            _context.BasketItems.Remove(basketItem);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<BasketItem>> GetAllBasketItems()
@@ -33,14 +36,20 @@ namespace E_Commerce.Models.Services
             return await _context.BasketItems.ToListAsync();
         }
 
+        public async Task<BasketItem> GetBasketItemById(int id)
+        {
+            return await _context.BasketItems.FindAsync(id);
+        }
+
         public Task<BasketItem> GetBasketById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateBasketItems(BasketItem basketItem)
+        public async Task UpdateBasketItems(BasketItem basketItem)
         {
-            throw new NotImplementedException();
+            _context.Entry(basketItem).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
        public Basket FindBasketID(string email)

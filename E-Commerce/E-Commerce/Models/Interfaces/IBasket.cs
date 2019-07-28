@@ -39,7 +39,7 @@ namespace E_Commerce.Models.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task DeleteBasketItems(int id);
+        Task DeleteBasketItem(int id);
 
         Basket FindBasketID(string email);
     }
