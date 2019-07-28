@@ -9,6 +9,7 @@ namespace E_Commerce.Models.ViewModels
 {
     public class BasketDetailViewModel
     {
+        public int ID { get; set; }
         public int BasketID { get; set; }
         public int ProductID { get; set; }
         public string Name { get; }

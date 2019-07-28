@@ -15,20 +15,25 @@
 
         @foreach (var basketItem in @Model)
         {
-    <div class="basketItems">
-        <h3>@basketItem.Name</h3>
-        <img src="@basketItem.Image)" />
-        <p>Price: $@basketItem.Price)</p>
-        <form>
-            <p>Price: $@Html.DisplayFor(basketItem => basketItem.Quanity)</p>
-            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ID">Details</a>
-        </form>
-        <form>
-            <p>Price: $@Html.DisplayFor(basketItem => basketItem.Quanity)</p>
-            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ID">Details</a>
-        </form>
-    </div>
+        <div class="basketItems">
+            <h3>@basketItem.Name</h3>
+            <img src="@basketItem.Image)" />
+            <p>Price: $@basketItem.Price)</p>
+            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ID">More Details</a>
+            <form asp-action="update" method="post">
+                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID"/>
+                <label for="quanity">Quantity</label>
+                <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" min="1"/>
+                <button type="submit">Update Quantity</button>
+            </form>
+            <form>
+                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" />
+                <button type="submit">Delete From Basket</button>
+            </form>
+        </div>
         }
+
+        <a asp-action="checkout">Checkout</a>
     </body>
     </html>
 
