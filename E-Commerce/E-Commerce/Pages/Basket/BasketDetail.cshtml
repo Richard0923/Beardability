@@ -1,5 +1,5 @@
 ﻿@page
-@model E_Commerce.Models.ViewModels.BasketDetailViewModel
+@model IEnumerable<E_Commerce.Models.ViewModels.BasketDetailViewModel>
 @{
     ViewData["Title"] = "BasketDetail";
 }
@@ -13,16 +13,22 @@
 
         <h1>Basket</h1>
 
-        @foreach (var basketItem in Model.Basket)
-    {
+        @foreach (var basketItem in @Model)
+        {
     <div class="basketItems">
-        <h3>@Html.DisplayFor(basketItem => basketItem.Name)</h3>
-        <img src="@Html.DisplayFor(basketItem => basketItem.Image)" />
-        <p>Price: $@Html.DisplayFor(basketItem => basketItem.Price)</p>
-        <p>Price: $@Html.DisplayFor(basketItem => basketItem.Quanity)</p>
-        <a asp-page="ShoppingDetail" asp-route-id="@product.ID">Details</a>
+        <h3>@basketItem.Name</h3>
+        <img src="@basketItem.Image)" />
+        <p>Price: $@basketItem.Price)</p>
+        <form>
+            <p>Price: $@Html.DisplayFor(basketItem => basketItem.Quanity)</p>
+            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ID">Details</a>
+        </form>
+        <form>
+            <p>Price: $@Html.DisplayFor(basketItem => basketItem.Quanity)</p>
+            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ID">Details</a>
+        </form>
     </div>
-    }
+        }
     </body>
     </html>
 

@@ -32,11 +32,20 @@ namespace E_Commerce.Pages.Basket
             List<BasketItem> basketItems = await _context.GetAllBasketItems();
         }
 
+        /// <summary>
+        /// Updates details of given basket item in basket
+        /// </summary>
+        /// <param name="basketItem"></param>
+        /// <returns></returns>
         public async Task OnPut(BasketItem basketItem)
         {
             await _context.UpdateBasketItems(basketItem);
         }
 
+        /// <summary>
+        /// Removes record of given basket item in basket
+        /// </summary>
+        /// <returns></returns>
         public async Task OnDelete()
         {
             await _context.DeleteBasketItem(BasketItem.ID);
