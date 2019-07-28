@@ -11,10 +11,10 @@ namespace E_Commerce.Models.ViewModels
     {
         public int BasketID { get; set; }
         public int ProductID { get; set; }
-        public string Name { get; set; }
-        public string Sku { get; set; }
-        public decimal Price { get; set; }
-        public string Image { get; set; }
+        public string Name { get; }
+        public string Sku { get; }
+        public decimal Price { get; }
+        public string Image { get; }
         public int Quanity { get; set; }
     }
 }
