@@ -1,5 +1,5 @@
 ﻿@page
-@model IEnumerable<E_Commerce.Models.ViewModels.BasketDetailViewModel>
+@model E_Commerce.Pages.Basket.BasketDetailModel
 @{
     ViewData["Title"] = "BasketDetail";
 }
@@ -13,27 +13,27 @@
 
     <h1>Basket</h1>
 
-    @foreach (var basketItem in @Model)
+    @foreach (var basketItem in @Model.BasketItem)
     {
         <div class="basketItems">
             <h3>@basketItem.Name</h3>
             <img src="@basketItem.Image)" />
             <p>Price: $@basketItem.Price)</p>
-            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ID">More Details</a>
+            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ProductID">More Details</a>
             <form asp-action="update" method="post">
                 <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" />
                 <label for="quanity">Quantity</label>
                 <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" min="1" />
                 <button type="submit">Update Quantity</button>
             </form>
-            <form>
+            <form asp-action="delete" method="delete">
                 <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" />
                 <button type="submit">Delete From Basket</button>
             </form>
         </div>
     }
 
-    <a asp-action="checkout">Checkout</a>
+    <a href="@Url.Action("Receipt", "Checkout")">Checkout</a>
 </body>
 </html>
 

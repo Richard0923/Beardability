@@ -46,7 +46,7 @@ namespace E_Commerce.Models.Services
             throw new NotImplementedException();
         }
 
-        public async Task UpdateBasketItems(BasketItem basketItem)
+        public async Task UpdateBasketItem(BasketItem basketItem)
         {
             _context.Entry(basketItem).State = EntityState.Modified;
             await _context.SaveChangesAsync();

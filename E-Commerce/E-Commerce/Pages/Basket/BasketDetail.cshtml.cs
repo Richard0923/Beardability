@@ -12,11 +12,13 @@ namespace E_Commerce.Pages.Basket
     public class BasketDetailModel : PageModel
     {
 
-        public IBasket _context;
+        public IInventory _context;
+        public IBasket _basket;
 
-        public BasketDetailModel(IBasket context)
+        public BasketDetailModel(IInventory context, IBasket basket)
         {
             _context = context;
+            _basket = basket;
         }
 
         public ICollection<BasketItem> BasketItems { get; }
@@ -29,7 +31,7 @@ namespace E_Commerce.Pages.Basket
         /// <returns>List of BasketItems</returns>
         public async Task OnGet()
         {
-            BasketItem = await _context.GetAllBasketItems();
+            BasketItem = await _basket.GetAllBasketItems();
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace E_Commerce.Pages.Basket
         /// <returns></returns>
         public async Task OnPut(BasketItem basketItem)
         {
-            await _context.UpdateBasketItems(basketItem);
+            await _basket.UpdateBasketItem(basketItem);
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace E_Commerce.Pages.Basket
         /// <returns></returns>
         public async Task OnDelete(int id)
         {
-            await _context.DeleteBasketItem(id);
+            await _basket.DeleteBasketItem(id);
         }
 
     }
