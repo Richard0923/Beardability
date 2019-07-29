@@ -88,7 +88,7 @@ namespace E_Commerce.Pages.Account
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     
-                    var basket = new Basket
+                    var basket = new E_Commerce.Models.Basket
                     {
                         Email = user.Email
                     };

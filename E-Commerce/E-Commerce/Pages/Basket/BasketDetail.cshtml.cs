@@ -21,7 +21,7 @@ namespace E_Commerce.Pages.Basket
 
         public ICollection<BasketItem> BasketItems { get; }
 
-        public BasketItem BasketItem { get; set; }
+        public List<BasketItem> BasketItem { get; set; }
 
         /// <summary>
         /// Retrieves all BasketItems in user's Basket
@@ -29,7 +29,7 @@ namespace E_Commerce.Pages.Basket
         /// <returns>List of BasketItems</returns>
         public async Task OnGet()
         {
-            List<BasketItem> basketItems = await _context.GetAllBasketItems();
+            BasketItem = await _context.GetAllBasketItems();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace E_Commerce.Pages.Basket
         /// Removes record of given basket item in basket
         /// </summary>
         /// <returns></returns>
-        public async Task OnDelete()
+        public async Task OnDelete(int id)
         {
-            await _context.DeleteBasketItem(BasketItem.ID);
+            await _context.DeleteBasketItem(id);
         }
 
     }
