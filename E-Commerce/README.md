@@ -1,4 +1,5 @@
  # Beardability: Your One Stop Shop for Facial Hair Bliss
+ ## Authors: Jonathan Rice, Meggan Triplett, Richard Rosado
 
  We are your premier purveyor of artificial facial hair. We have many different popular styles and are always willing to make custom to fit your needs. We also carry all the accessories that you will need to maintain your new facial wonder. 
 
