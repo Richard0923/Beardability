@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace E_Commerce.Pages.Account
 {
+    /// <summary>
+    /// Adds Registration functionallity 
+    /// </summary>
     public class RegisterModel : PageModel
     {
         private UserManager<ApplicationUser> _userManager;
@@ -37,6 +40,11 @@ namespace E_Commerce.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        /// <summary>
+        /// Registers the user's input if valid and adds any claims and roles associated with that user.
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns>Returns user to home page if registration was successfull</returns>
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");

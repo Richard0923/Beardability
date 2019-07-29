@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models
 {
+    /// <summary>
+    /// Model for BasketItem Table 
+    /// </summary>
     public class BasketItem
     {
         public int ID { get; set; }

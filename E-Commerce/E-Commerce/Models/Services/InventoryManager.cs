@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models.Services
 {
+    /// <summary>
+    /// Inventory service that adds functionallity to the IInventory interface.
+    /// </summary>
     public class InventoryManager : IInventory
 
     {

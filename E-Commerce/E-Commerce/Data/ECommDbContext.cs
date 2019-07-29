@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Data
 {
+    /// <summary>
+    /// Product's DB that has all our seeded data for E-Comm site
+    /// </summary>
     public class ECommDbContext : DbContext
     {
         public ECommDbContext(DbContextOptions<ECommDbContext> options) : base(options)
@@ -14,8 +17,13 @@ namespace E_Commerce.Data
 
         }
 
+        /// <summary>
+        /// Creates the seeded data for our database.
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Product seeded data 
             modelBuilder.Entity<Product>().HasData(
 
                 new Product
@@ -154,7 +162,7 @@ namespace E_Commerce.Data
                     Image = "http://placebeard.it/g/100/125"
                 });
 
-
+           //Basket seeded data  
             modelBuilder.Entity<Basket>().HasData(
 
                 new Basket
@@ -164,6 +172,7 @@ namespace E_Commerce.Data
                     Email = "admin@admin.com"
                 });
 
+            //BasketItem seeded data 
             modelBuilder.Entity<BasketItem>().HasData(
 
                 new BasketItem
@@ -244,6 +253,7 @@ namespace E_Commerce.Data
                 });
         }
 
+        //Tables for our DBd
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }

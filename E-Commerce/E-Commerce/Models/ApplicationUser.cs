@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models
 {
+    /// <summary>
+    /// User Model 
+    /// </summary>
     public class ApplicationUser: IdentityUser
     {
         [Display(Name ="First Name")]
@@ -20,6 +23,9 @@ namespace E_Commerce.Models
 
     }
 
+    /// <summary>
+    /// Roles that those users can be assigned
+    /// </summary>
     public static class ApplicationRoles
     {
         public const string Member = "Member";

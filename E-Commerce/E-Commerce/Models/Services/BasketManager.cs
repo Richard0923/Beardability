@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models.Services
 {
+    /// <summary>
+    /// Basket service that adds the functionallity to the interface
+    /// </summary>
     public class BasketManager : IBasket
     {
         private ECommDbContext _context;

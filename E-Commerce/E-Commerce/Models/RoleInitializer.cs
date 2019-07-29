@@ -9,8 +9,14 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models
 {
+    /// <summary>
+    /// Sets up roles for users and adds those role to the Identity DB
+    /// </summary>
     public class RoleInitializer
     {
+        /// <summary>
+        /// Creates new roles.
+        /// </summary>
         private static readonly List<IdentityRole> Roles = new List<IdentityRole>()
         {
             new IdentityRole
@@ -25,6 +31,10 @@ namespace E_Commerce.Models
 
         };
 
+        /// <summary>
+        /// Makes sure the database is created and adds roles into that database.
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public static void SeedData(IServiceProvider serviceProvider)
         {
             using (var dbContext =
@@ -35,6 +45,10 @@ namespace E_Commerce.Models
             }
         }
 
+        /// <summary>
+        /// Addes roles to the Roles table then saves changes.
+        /// </summary>
+        /// <param name="context"></param>
         private static void AddRoles(ApplicationDbContext context)
         {
             if (context.Roles.Any()) return;

@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce.Controllers
 {
+    /// <summary>
+    /// Controller for the Home page just being used to return a view.
+    /// </summary>
     public class HomeController : Controller
     {
         /// <summary>
