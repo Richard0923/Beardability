@@ -12,29 +12,44 @@ namespace E_Commerce.Pages.Basket
     public class BasketDetailModel : PageModel
     {
 
-        private readonly IInventory _context;
-        public IBasket _basketList;
+        public IBasket _context;
 
-        public BasketDetailModel(IInventory context, IBasket basketList)
+        public BasketDetailModel(IBasket context)
         {
             _context = context;
-            _basketList = basketList;
         }
 
         public ICollection<BasketItem> BasketItems { get; }
 
-        [BindProperty]
         public List<BasketItem> BasketItem { get; set; }
 
+        /// <summary>
+        /// Retrieves all BasketItems in user's Basket
+        /// </summary>
+        /// <returns>List of BasketItems</returns>
         public async Task OnGet()
         {
-            List<BasketItem> basketItems = await _basketList.GetAllBasketItems();
+            BasketItem = await _context.GetAllBasketItems();
         }
 
-        //public async Task OnPut(BasketItem basketItem)
-        //{
-            
-        //}
+        /// <summary>
+        /// Updates details of given basket item in basket
+        /// </summary>
+        /// <param name="basketItem"></param>
+        /// <returns></returns>
+        public async Task OnPut(BasketItem basketItem)
+        {
+            await _context.UpdateBasketItems(basketItem);
+        }
+
+        /// <summary>
+        /// Removes record of given basket item in basket
+        /// </summary>
+        /// <returns></returns>
+        public async Task OnDelete(int id)
+        {
+            await _context.DeleteBasketItem(id);
+        }
 
     }
 }

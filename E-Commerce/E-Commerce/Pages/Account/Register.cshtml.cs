@@ -24,7 +24,7 @@ namespace E_Commerce.Pages.Account
         public RegisterViewModel Input { get; set; }
         public string ReturnUrl { get; set; }
 
-        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ECommDbContext context, IEmailSender emailSender )
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ECommDbContext context, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -41,7 +41,7 @@ namespace E_Commerce.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
@@ -55,7 +55,7 @@ namespace E_Commerce.Pages.Account
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
                     Claim dobClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.DOB.Year, user.DOB.Month, user.DOB.Day).ToString("u"), ClaimValueTypes.DateTime);
@@ -71,13 +71,13 @@ namespace E_Commerce.Pages.Account
                     };
 
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity();
-                        claimsIdentity.AddClaims(userClaims);
+                    claimsIdentity.AddClaims(userClaims);
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
-                        claimsPrincipal.AddIdentity(claimsIdentity);
+                    claimsPrincipal.AddIdentity(claimsIdentity);
 
                     await _userManager.AddClaimsAsync(user, userClaims);
 
-                    if(user.Email.ToLower() == "admin@admin.com")
+                    if (user.Email.ToLower() == "admin@admin.com")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                     }
@@ -87,7 +87,7 @@ namespace E_Commerce.Pages.Account
                     await _emailSender.SendEmailAsync(user.Email, "Welcome To BeardsRUs", "<p>Thank you for registering to BeardsRUs</p>");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-
+                    
                     var basket = new E_Commerce.Models.Basket
                     {
                         Email = user.Email
