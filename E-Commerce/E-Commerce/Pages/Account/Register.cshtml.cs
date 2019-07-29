@@ -51,6 +51,7 @@ namespace E_Commerce.Pages.Account
 
             if(ModelState.IsValid)
             {
+                //Creates a new user
                 var user = new ApplicationUser
                 {
                     UserName = Input.Email,
@@ -63,6 +64,7 @@ namespace E_Commerce.Pages.Account
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
+                //Adds claims to the new user
                 if(result.Succeeded)
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
@@ -85,6 +87,7 @@ namespace E_Commerce.Pages.Account
 
                     await _userManager.AddClaimsAsync(user, userClaims);
 
+                    //If the user has this email it will give them a role of admin
                     if(user.Email.ToLower() == "admin@admin.com")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
@@ -92,10 +95,13 @@ namespace E_Commerce.Pages.Account
 
                     await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
 
+                    //Sends registration email to the user 
                     await _emailSender.SendEmailAsync(user.Email, "Welcome To BeardsRUs", "<p>Thank you for registering to BeardsRUs</p>");
 
+                    //Signs the user into there account
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
+                    //Assigns a basket to the new user
                     var basket = new E_Commerce.Models.Basket
                     {
                         Email = user.Email

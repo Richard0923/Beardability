@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Commerce.Pages.Shop
 {
+    /// <summary>
+    /// Adds functionallity to the ShoppingDetail page 
+    /// </summary>
     public class ShoppingDetailModel : PageModel
     {
 
@@ -28,11 +31,21 @@ namespace E_Commerce.Pages.Shop
         [BindProperty]
         public BasketItem BasketItem { get; set; }
 
+        /// <summary>
+        /// When the page gets render it grabs the Product deatils by id .
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task OnGet(int id)
         {
             Beard = await _context.GetItemByIDAsync(id);
         }
 
+        /// <summary>
+        /// It creates a new basket item and adds it to the BasketItems DB 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task OnPost(int id )
         {
             Beard = await _context.GetItemByIDAsync(id);

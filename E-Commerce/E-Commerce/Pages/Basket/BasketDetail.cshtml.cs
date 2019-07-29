@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Commerce.Pages.Basket
 {
+    /// <summary>
+    /// Adds functionallity to the basket detail page
+    /// </summary>
     public class BasketDetailModel : PageModel
     {
 
@@ -26,6 +29,10 @@ namespace E_Commerce.Pages.Basket
         [BindProperty]
         public List<BasketItem> BasketItem { get; set; }
 
+        /// <summary>
+        /// When the page gets render it grabs a list of all the basket items.
+        /// </summary>
+        /// <returns></returns>
         public async Task OnGet()
         {
             List<BasketItem> basketItems = await _basketList.GetAllBasketItems();

@@ -50,7 +50,7 @@ namespace E_Commerce.Pages.Account
                     }
                     else
                     {
-                        // send them to the home page
+                        //Sends them to the home page
                         return RedirectToAction("Index", "Home");
                     }
                 }
