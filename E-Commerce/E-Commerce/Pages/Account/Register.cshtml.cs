@@ -87,8 +87,8 @@ namespace E_Commerce.Pages.Account
                     await _emailSender.SendEmailAsync(user.Email, "Welcome To BeardsRUs", "<p>Thank you for registering to BeardsRUs</p>");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    
-                    var basket = new Basket
+
+                    var basket = new E_Commerce.Models.Basket
                     {
                         Email = user.Email
                     };

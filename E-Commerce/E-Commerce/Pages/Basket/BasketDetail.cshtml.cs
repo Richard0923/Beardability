@@ -24,7 +24,7 @@ namespace E_Commerce.Pages.Basket
         public ICollection<BasketItem> BasketItems { get; }
 
         [BindProperty]
-        public BasketItem BasketItem { get; set; }
+        public List<BasketItem> BasketItem { get; set; }
 
         public async Task OnGet()
         {
