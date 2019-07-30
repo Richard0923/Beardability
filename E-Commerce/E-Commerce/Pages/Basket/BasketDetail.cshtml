@@ -1,4 +1,4 @@
-﻿@page
+﻿@page  
 @model E_Commerce.Pages.Basket.BasketDetailModel
 @{
     ViewData["Title"] = "BasketDetail";
@@ -16,10 +16,9 @@
     @foreach (var basketItem in @Model.BasketItem)
     {
         <div class="basketItems">
-            <h3>@basketItem.Name</h3>
+            <h3><a asp-page="../Shop/ShoppingDetail" asp-route-id="@basketItem.ProductID">@basketItem.Name</a></h3>
             <img src="@basketItem.Image)" />
             <p>Price: $@basketItem.Price)</p>
-            <a asp-page="ShoppingDetail" asp-route-id="@basketItem.ProductID">More Details</a>
             <form asp-action="update" method="post">
                 <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" />
                 <label for="quanity">Quantity</label>
@@ -32,7 +31,7 @@
             </form>
         </div>
     }
-
+    
     <a href="@Url.Action("Receipt", "Checkout")">Checkout</a>
 </body>
 </html>
