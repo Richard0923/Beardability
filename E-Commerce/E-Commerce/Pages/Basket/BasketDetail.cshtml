@@ -20,13 +20,13 @@
             <img src="@basketItem.Image)" />
             <p>Price: $@basketItem.Price)</p>
             <form asp-action="update" method="post">
-                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" />
+                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id"/>
                 <label for="quanity">Quantity</label>
-                <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" min="1" />
+                <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
                 <button type="submit">Update Quantity</button>
             </form>
             <form asp-action="delete" method="delete">
-                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" />
+                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id"/>
                 <button type="submit">Delete From Basket</button>
             </form>
         </div>

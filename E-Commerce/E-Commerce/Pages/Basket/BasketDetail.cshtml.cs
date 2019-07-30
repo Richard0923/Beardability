@@ -39,8 +39,16 @@ namespace E_Commerce.Pages.Basket
         /// </summary>
         /// <param name="basketItem"></param>
         /// <returns></returns>
-        public async Task OnPut(BasketItem basketItem)
+        public async Task OnPut()
         {
+            var formId = Request.Form["id"];
+            int id = Convert.ToInt32(formId);
+            var formQuanity = Request.Form["quanity"];
+            int quanity = Convert.ToInt32(formQuanity);
+
+            BasketItem basketItem = await _basket.GetBasketById(id);
+            basketItem.Quanity = quanity;
+
             await _basket.UpdateBasketItem(basketItem);
         }
 
@@ -48,8 +56,10 @@ namespace E_Commerce.Pages.Basket
         /// Removes record of given basket item in basket
         /// </summary>
         /// <returns></returns>
-        public async Task OnDelete(int id)
+        public async Task OnDelete()
         {
+            var formId = Request.Form["id"];
+            int id = Convert.ToInt32(formId);
             await _basket.DeleteBasketItem(id);
         }
 
