@@ -23,6 +23,9 @@ namespace E_Commerce.Pages.Basket
 
         [BindProperty]
         public List<BasketItem> BasketItems { get; set; }
+        
+        [BindProperty]
+        public BasketItem BasketItem { get; set; }
 
         /// <summary>
         /// Retrieves all BasketItems in user's Basket
@@ -38,7 +41,7 @@ namespace E_Commerce.Pages.Basket
         /// </summary>
         /// <param name="basketItem"></param>
         /// <returns></returns>
-        public async Task OnPut()
+        public async Task OnPost()
         {
             var formId = Request.Form["id"];
             int id = Convert.ToInt32(formId);
@@ -49,20 +52,18 @@ namespace E_Commerce.Pages.Basket
             basketItem.Quanity = quanity;
 
             await _basket.UpdateBasketItem(basketItem);
-            return;
         }
 
         /// <summary>
         /// Removes record of given basket item in basket
         /// </summary>
         /// <returns></returns>
-        public async Task OnDelete()
+        public async Task OnPostDelete()
         {
             var formId = Request.Form["id"];
             int id = Convert.ToInt32(formId);
 
             await _basket.DeleteBasketItem(id);
-            return;
         }
 
     }

@@ -42,5 +42,6 @@ namespace E_Commerce.Models.Interfaces
         Task DeleteBasketItem(int id);
 
         Basket FindBasketID(string email);
+        Task SaveChangesAsync();
     }
 }
