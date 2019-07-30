@@ -21,9 +21,8 @@ namespace E_Commerce.Pages.Basket
             _basket = basket;
         }
 
-        public ICollection<BasketItem> BasketItems { get; }
-
-        public List<BasketItem> BasketItem { get; set; }
+        [BindProperty]
+        public List<BasketItem> BasketItems { get; set; }
 
         /// <summary>
         /// Retrieves all BasketItems in user's Basket
@@ -31,7 +30,7 @@ namespace E_Commerce.Pages.Basket
         /// <returns>List of BasketItems</returns>
         public async Task OnGet()
         {
-            BasketItem = await _basket.GetAllBasketItems();
+            BasketItems = await _basket.GetAllBasketItems();
         }
 
         /// <summary>
@@ -50,6 +49,7 @@ namespace E_Commerce.Pages.Basket
             basketItem.Quanity = quanity;
 
             await _basket.UpdateBasketItem(basketItem);
+            return;
         }
 
         /// <summary>
@@ -60,7 +60,9 @@ namespace E_Commerce.Pages.Basket
         {
             var formId = Request.Form["id"];
             int id = Convert.ToInt32(formId);
+
             await _basket.DeleteBasketItem(id);
+            return;
         }
 
     }

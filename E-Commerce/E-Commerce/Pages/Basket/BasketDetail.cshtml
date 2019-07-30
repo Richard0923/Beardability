@@ -1,7 +1,6 @@
 ﻿@page  
 @model E_Commerce.Pages.Basket.BasketDetailModel
-@{
-    ViewData["Title"] = "BasketDetail";
+@{ 
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,19 +12,19 @@
 
     <h1>Basket</h1>
 
-    @foreach (var basketItem in @Model.BasketItem)
+    @foreach (var basketItem in @Model.BasketItems)
     {
         <div class="basketItems">
             <h3><a asp-page="../Shop/ShoppingDetail" asp-route-id="@basketItem.ProductID">@basketItem.Name</a></h3>
             <img src="@basketItem.Image)" />
             <p>Price: $@basketItem.Price)</p>
-            <form asp-action="update" method="post">
+            <form method="post">
                 <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id"/>
                 <label for="quanity">Quantity</label>
                 <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
                 <button type="submit">Update Quantity</button>
             </form>
-            <form asp-action="delete" method="delete">
+            <form method="delete">
                 <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id"/>
                 <button type="submit">Delete From Basket</button>
             </form>
