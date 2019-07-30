@@ -32,7 +32,7 @@ namespace E_Commerce.Models.Interfaces
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        Task UpdateItemAsync(Product product);
+        Task UpdateItemAsync(int id);
 
         /// <summary>
         /// Removes an Inventory Item

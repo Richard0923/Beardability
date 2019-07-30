@@ -12,16 +12,20 @@ namespace E_Commerce.Pages.Basket
     public class BasketDetailModel : PageModel
     {
 
-        public IBasket _context;
+        public IInventory _context;
+        public IBasket _basket;
 
-        public BasketDetailModel(IBasket context)
+        public BasketDetailModel(IInventory context, IBasket basket)
         {
             _context = context;
+            _basket = basket;
         }
 
-        public ICollection<BasketItem> BasketItems { get; }
-
-        public List<BasketItem> BasketItem { get; set; }
+        [BindProperty]
+        public List<BasketItem> BasketItems { get; set; }
+        
+        [BindProperty]
+        public BasketItem BasketItem { get; set; }
 
         /// <summary>
         /// Retrieves all BasketItems in user's Basket
@@ -29,7 +33,7 @@ namespace E_Commerce.Pages.Basket
         /// <returns>List of BasketItems</returns>
         public async Task OnGet()
         {
-            BasketItem = await _context.GetAllBasketItems();
+            BasketItems = await _basket.GetAllBasketItems();
         }
 
         /// <summary>
@@ -37,18 +41,29 @@ namespace E_Commerce.Pages.Basket
         /// </summary>
         /// <param name="basketItem"></param>
         /// <returns></returns>
-        public async Task OnPut(BasketItem basketItem)
+        public async Task OnPost()
         {
-            await _context.UpdateBasketItems(basketItem);
+            var formId = Request.Form["id"];
+            int id = Convert.ToInt32(formId);
+            var formQuanity = Request.Form["quanity"];
+            int quanity = Convert.ToInt32(formQuanity);
+
+            BasketItem basketItem = await _basket.GetBasketById(id);
+            basketItem.Quanity = quanity;
+
+            await _basket.UpdateBasketItem(basketItem);
         }
 
         /// <summary>
         /// Removes record of given basket item in basket
         /// </summary>
         /// <returns></returns>
-        public async Task OnDelete(int id)
+        public async Task OnPostDelete()
         {
-            await _context.DeleteBasketItem(id);
+            var formId = Request.Form["id"];
+            int id = Convert.ToInt32(formId);
+
+            await _basket.DeleteBasketItem(id);
         }
 
     }
