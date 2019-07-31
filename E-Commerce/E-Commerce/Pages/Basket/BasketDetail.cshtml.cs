@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce.Models;
 using E_Commerce.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Commerce.Pages.Basket
 {
+    [Authorize]
     public class BasketDetailModel : PageModel
     {
 
