@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models.Interfaces
 {
+    /// <summary>
+    /// Interface for Products in the database  
+    /// </summary>
     public interface IInventory
     {
         /// <summary>

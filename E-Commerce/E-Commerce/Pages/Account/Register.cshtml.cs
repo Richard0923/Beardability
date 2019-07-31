@@ -37,6 +37,11 @@ namespace E_Commerce.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        /// <summary>
+        /// Registers a new user with a valid model state and signs that user in.
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns>Returns user to back to  the home page</returns>
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");

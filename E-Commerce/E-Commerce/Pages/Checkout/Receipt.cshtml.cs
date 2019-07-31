@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Commerce.Pages.Checkout.Receipt
 {
+    /// <summary>
+    /// Adds functionallity to the Receipt page 
+    /// </summary>
     public class ReceiptModel : PageModel
     {
         private readonly IBasket _basket;
@@ -19,6 +22,11 @@ namespace E_Commerce.Pages.Checkout.Receipt
         }
 
         public List<BasketItem> PurchaseItems { get; set; }
+
+        /// <summary>
+        /// When the page gets render it grabs a list of all the basket items.
+        /// </summary>
+        /// <returns></returns>
         public async Task OnGet()
         {
             PurchaseItems = await _basket.GetAllBasketItems();
