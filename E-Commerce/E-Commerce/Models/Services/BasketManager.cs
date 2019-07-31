@@ -44,14 +44,14 @@ namespace E_Commerce.Models.Services
             return await _context.BasketItems.FindAsync(id);
         }
 
-        public Task<BasketItem> GetBasketById(int id)
+        public async Task<BasketItem> GetBasketById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.BasketItems.FindAsync(id);
         }
 
         public async Task UpdateBasketItem(BasketItem basketItem)
         {
-            _context.Entry(basketItem).State = EntityState.Modified;
+            _context.BasketItems.Update(basketItem);
             await _context.SaveChangesAsync();
         }
 
@@ -59,6 +59,11 @@ namespace E_Commerce.Models.Services
         {
             Basket basket = _context.Baskets.FirstOrDefault(e => e.Email == email);
             return basket;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

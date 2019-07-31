@@ -13,9 +13,6 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace E_Commerce.Pages.Account
 {
-    /// <summary>
-    /// Adds Registration functionallity 
-    /// </summary>
     public class RegisterModel : PageModel
     {
         private UserManager<ApplicationUser> _userManager;
@@ -27,7 +24,7 @@ namespace E_Commerce.Pages.Account
         public RegisterViewModel Input { get; set; }
         public string ReturnUrl { get; set; }
 
-        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ECommDbContext context, IEmailSender emailSender )
+        public RegisterModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ECommDbContext context, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -40,18 +37,12 @@ namespace E_Commerce.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        /// <summary>
-        /// Registers the user's input if valid and adds any claims and roles associated with that user.
-        /// </summary>
-        /// <param name="returnUrl"></param>
-        /// <returns>Returns user to home page if registration was successfull</returns>
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                //Creates a new user
                 var user = new ApplicationUser
                 {
                     UserName = Input.Email,
@@ -64,8 +55,7 @@ namespace E_Commerce.Pages.Account
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
-                //Adds claims to the new user
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
                     Claim dobClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.DOB.Year, user.DOB.Month, user.DOB.Day).ToString("u"), ClaimValueTypes.DateTime);
@@ -81,27 +71,23 @@ namespace E_Commerce.Pages.Account
                     };
 
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity();
-                        claimsIdentity.AddClaims(userClaims);
+                    claimsIdentity.AddClaims(userClaims);
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
-                        claimsPrincipal.AddIdentity(claimsIdentity);
+                    claimsPrincipal.AddIdentity(claimsIdentity);
 
                     await _userManager.AddClaimsAsync(user, userClaims);
 
-                    //If the user has this email it will give them a role of admin
-                    if(user.Email.ToLower() == "admin@admin.com")
+                    if (user.Email.ToLower() == "admin@admin.com")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                     }
 
                     await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
 
-                    //Sends registration email to the user 
                     await _emailSender.SendEmailAsync(user.Email, "Welcome To BeardsRUs", "<p>Thank you for registering to BeardsRUs</p>");
 
-                    //Signs the user into there account
                     await _signInManager.SignInAsync(user, isPersistent: false);
-
-                    //Assigns a basket to the new user
+                    
                     var basket = new E_Commerce.Models.Basket
                     {
                         Email = user.Email

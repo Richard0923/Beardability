@@ -41,7 +41,7 @@ namespace E_Commerce.Models.Services
             return await _context.Products.FirstOrDefaultAsync(a => a.ID == id);
         }
 
-        public Task UpdateItemAsync(Product product)
+        public Task UpdateItemAsync(int id)
         {
             throw new NotImplementedException();
         }
