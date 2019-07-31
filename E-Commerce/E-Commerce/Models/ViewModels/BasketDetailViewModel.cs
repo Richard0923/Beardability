@@ -7,6 +7,9 @@ using static E_Commerce.Models.BasketItem;
 
 namespace E_Commerce.Models.ViewModels
 {
+    /// <summary>
+    /// View Model for Basket detail
+    /// </summary>
     public class BasketDetailViewModel
     {
         public int ID { get; set; }

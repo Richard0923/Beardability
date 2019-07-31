@@ -16,7 +16,7 @@ namespace E_Commerce.Controllers
         /// <summary>
         ///Routes to the Admin page 
         /// </summary>
-        /// <returns>Admin Index PageS</returns>
+        /// <returns>Admin Index Page</returns>
         public IActionResult Index()
         {
             return View();

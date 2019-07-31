@@ -41,7 +41,17 @@ namespace E_Commerce.Models.Interfaces
         /// <returns></returns>
         Task DeleteBasketItem(int id);
 
+        /// <summary>
+        /// Finds the basket associated with the email given 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Returns the Basket with the email given</returns>
         Basket FindBasketID(string email);
+
+        /// <summary>
+        /// Saves Changes async
+        /// </summary>
+        /// <returns></returns>
         Task SaveChangesAsync();
     }
 }
