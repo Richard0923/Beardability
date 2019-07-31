@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Commerce.Pages.Account
 {
+    /// <summary>
+    /// Adds Logout functionallity for user's 
+    /// </summary>
     public class LogoutModel : PageModel
     {
 
@@ -24,6 +27,10 @@ namespace E_Commerce.Pages.Account
 
         }
 
+        /// <summary>
+        /// Signs the user out 
+        /// </summary>
+        /// <returns>Redirects back to the Home page after being logged out </returns>
         public async Task<IActionResult> OnPost()
         {
             await _signInManager.SignOutAsync();

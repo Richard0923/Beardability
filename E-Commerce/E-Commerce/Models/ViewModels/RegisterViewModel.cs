@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace E_Commerce.Models.ViewModels
 {
+    /// <summary>
+    /// Model for User registration.
+    /// </summary>
     public class RegisterViewModel
     {
         [Required]

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models
 {
+    /// <summary>
+    /// Model for our Basket Table
+    /// </summary>
     public class Basket 
     {
         //[ForeignKey("UserID")]
