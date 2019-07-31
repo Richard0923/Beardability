@@ -36,7 +36,7 @@ namespace E_Commerce.Pages.Checkout.Receipt
         /// All purchased items are being displayed on receipt.
         /// User will then receive an email to their registered email with a purchase receipt.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Sends email to user</returns>
         public async Task OnGet()
         {
             PurchaseItems = await _basket.GetAllBasketItems();
