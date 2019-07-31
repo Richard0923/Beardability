@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace E_Commerce.Pages.Account
 {
+    /// <summary>
+    /// Adds login functionallity for user's
+    /// </summary>
     public class LoginModel : PageModel
     {
         private SignInManager<ApplicationUser> _signInManager;
@@ -21,8 +24,6 @@ namespace E_Commerce.Pages.Account
             _userManager = userManager;
         }
 
-
-
         [BindProperty]
         public LoginInput Input { get; set; }
         public void OnGet()
@@ -30,6 +31,10 @@ namespace E_Commerce.Pages.Account
 
         }
 
+        /// <summary>
+        /// If the model state is valid it signs the user in and then sends them back to the home page.   
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
@@ -45,7 +50,7 @@ namespace E_Commerce.Pages.Account
                     }
                     else
                     {
-                        // send them to the home page
+                        //Sends them to the home page
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -58,6 +63,9 @@ namespace E_Commerce.Pages.Account
             return Page();
         }
 
+        /// <summary>
+        /// Nested class for the user's input
+        /// </summary>
         public class LoginInput
         {
             [Required]
