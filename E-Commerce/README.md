@@ -15,3 +15,9 @@
 
  https://beardsrus.azurewebsites.net/ 
 
+ ### Contributors
+ 
+ Jon Rice
+ Richard Rosado
+ Meggan Triplett
+
