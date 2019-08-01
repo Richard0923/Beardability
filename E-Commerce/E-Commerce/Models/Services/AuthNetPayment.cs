@@ -7,11 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using E_Commerce.Models.ViewModels;
 
 namespace E_Commerce.Models.Services
 {
     public class AuthNetPayment : IPayment
     {
+        public CheckoutViewModel shippingAddress { get; set; }
         public IConfiguration Configuration { get; }
 
         public AuthNetPayment(IConfiguration configuration)
@@ -60,7 +62,7 @@ namespace E_Commerce.Models.Services
             {
                 if (response.messages.resultCode == messageTypeEnum.Ok)
                 {
-                    return "Success";
+                    return "Groomed to Perfection ;{";
                 }
             }
             else
@@ -75,8 +77,15 @@ namespace E_Commerce.Models.Services
         {
             customerAddressType address = new customerAddressType()
             {
-                firstName = 
-            }
+                firstName = shippingAddress.FirstName,
+                lastName = shippingAddress.LastName,
+                address = shippingAddress.StreetAddress,
+                city = shippingAddress.City,
+                state = shippingAddress.State,
+                zip = shippingAddress.ZipCode
+            };
+
+            return address;
         }
     }
 }
