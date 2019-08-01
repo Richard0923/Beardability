@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,5 +20,15 @@ namespace E_Commerce.Models.ViewModels
 
         public string ZipCode { get; set; }
 
+        public CreditCardtype CreditCard { get; set; }
+    }
+
+    public enum CreditCardtype
+    {
+        [Display (Name= "Visa")]
+        Visa,//Set equal to number from user secrets
+
+        [Display (Name ="Mastercard")]
+        Mastercard//Set equal to number from user secrets
     }
 }
