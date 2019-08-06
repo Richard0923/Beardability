@@ -29,7 +29,7 @@ namespace E_Commerce.Pages.Checkout
 
         public void OnPost()
         {
-            string answer = _payment.Run();
+            string answer = _payment.Run(ShippingAddress);
             //shipping address turns null once this method is hit 
         }
 

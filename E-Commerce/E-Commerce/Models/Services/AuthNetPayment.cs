@@ -14,8 +14,8 @@ namespace E_Commerce.Models.Services
 {
     public class AuthNetPayment : IPayment
     {
-        [BindProperty]
-        public CheckoutViewModel ShippingAddress { get; set; }
+        
+        public CheckoutViewModel ShippingAddress { get; }
 
         public IConfiguration Configuration { get; }
 
@@ -25,7 +25,7 @@ namespace E_Commerce.Models.Services
 
         }
 
-        public string Run()
+        public string Run(CheckoutViewModel sa)
         {
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
 
@@ -42,7 +42,7 @@ namespace E_Commerce.Models.Services
                 expirationDate = Configuration["ExpirationDate"]
             };
 
-            customerAddressType billingAddress = GetAddress();
+            customerAddressType billingAddress = GetAddress(sa);
 
             paymentType payment = new paymentType { Item = creditCard };
 
@@ -60,6 +60,7 @@ namespace E_Commerce.Models.Services
             };
 
             var contoller = new createTransactionController(request);
+            contoller.Execute();
             var response = contoller.GetApiResponse();
 
             if (response == null)
@@ -77,16 +78,16 @@ namespace E_Commerce.Models.Services
             return "Not Groomed :[";
         }
 
-        private customerAddressType GetAddress()
+        public customerAddressType GetAddress(CheckoutViewModel sa)
         {
             customerAddressType address = new customerAddressType()
             {
-                firstName = ShippingAddress.FirstName,
-                lastName = ShippingAddress.LastName,
-                address = ShippingAddress.StreetAddress,
-                city = ShippingAddress.City,
-                state = ShippingAddress.State,
-                zip = ShippingAddress.ZipCode
+                firstName = sa.FirstName,
+                lastName = sa.LastName,
+                address = sa.StreetAddress,
+                city = sa.City,
+                state = sa.State,
+                zip = sa.ZipCode
             };
 
             return address;
