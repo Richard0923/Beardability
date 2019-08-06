@@ -8,12 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce.Models.Services
 {
     public class AuthNetPayment : IPayment
     {
-        public CheckoutViewModel shippingAddress { get; set; }
+        
+        public CheckoutViewModel ShippingAddress { get; }
+
         public IConfiguration Configuration { get; }
 
         public AuthNetPayment(IConfiguration configuration)
@@ -21,7 +24,8 @@ namespace E_Commerce.Models.Services
             Configuration = configuration;
 
         }
-        public string Run()
+
+        public string Run(CheckoutViewModel sa)
         {
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
 
@@ -38,7 +42,7 @@ namespace E_Commerce.Models.Services
                 expirationDate = Configuration["ExpirationDate"]
             };
 
-            customerAddressType billingAddress = GetAddress();
+            customerAddressType billingAddress = GetAddress(sa);
 
             paymentType payment = new paymentType { Item = creditCard };
 
@@ -56,6 +60,7 @@ namespace E_Commerce.Models.Services
             };
 
             var contoller = new createTransactionController(request);
+            contoller.Execute();
             var response = contoller.GetApiResponse();
 
             if (response == null)
@@ -73,16 +78,16 @@ namespace E_Commerce.Models.Services
             return "Not Groomed :[";
         }
 
-        private customerAddressType GetAddress()
+        public customerAddressType GetAddress(CheckoutViewModel sa)
         {
             customerAddressType address = new customerAddressType()
             {
-                firstName = shippingAddress.FirstName,
-                lastName = shippingAddress.LastName,
-                address = shippingAddress.StreetAddress,
-                city = shippingAddress.City,
-                state = shippingAddress.State,
-                zip = shippingAddress.ZipCode
+                firstName = sa.FirstName,
+                lastName = sa.LastName,
+                address = sa.StreetAddress,
+                city = sa.City,
+                state = sa.State,
+                zip = sa.ZipCode
             };
 
             return address;

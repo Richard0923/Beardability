@@ -1,0 +1,33 @@
+﻿@page
+@model E_Commerce.Pages.Checkout.BillingDetailModel
+@{
+    ViewData["Title"] = "BillingDetail";
+}
+
+<h1>BillingDetail</h1>
+
+<form method="post">
+    <label asp-for="ShippingAddress.FirstName"></label>
+    <input asp-for="ShippingAddress.FirstName" />
+
+    <label asp-for="ShippingAddress.LastName"></label>
+    <input asp-for="ShippingAddress.LastName" />
+
+    <label asp-for="ShippingAddress.StreetAddress"></label>
+    <input asp-for="ShippingAddress.StreetAddress" />
+
+    <label asp-for="ShippingAddress.City"></label>
+    <input asp-for="ShippingAddress.City" />
+
+    <label asp-for="ShippingAddress.State"></label>
+    <input asp-for="ShippingAddress.State" />
+
+    <label asp-for="ShippingAddress.ZipCode"></label>
+    <input asp-for="ShippingAddress.ZipCode" />
+    
+    <label asp-for="ShippingAddress.CreditCard"></label>
+    <select asp-for="ShippingAddress.CreditCard" asp-items="@Html.GetEnumSelectList(typeof(E_Commerce.Models.ViewModels.CreditCardtype))"></select>
+    <span asp-validation-for="ShippingAddress.CreditCard"></span>
+    <button type="submit">PAY Me Now</button>
+</form>
+
