@@ -8,12 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using E_Commerce.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce.Models.Services
 {
     public class AuthNetPayment : IPayment
     {
-        public CheckoutViewModel shippingAddress { get; set; }
+        [BindProperty]
+        public CheckoutViewModel ShippingAddress { get; set; }
+
         public IConfiguration Configuration { get; }
 
         public AuthNetPayment(IConfiguration configuration)
@@ -21,6 +24,7 @@ namespace E_Commerce.Models.Services
             Configuration = configuration;
 
         }
+
         public string Run()
         {
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
@@ -77,12 +81,12 @@ namespace E_Commerce.Models.Services
         {
             customerAddressType address = new customerAddressType()
             {
-                firstName = shippingAddress.FirstName,
-                lastName = shippingAddress.LastName,
-                address = shippingAddress.StreetAddress,
-                city = shippingAddress.City,
-                state = shippingAddress.State,
-                zip = shippingAddress.ZipCode
+                firstName = ShippingAddress.FirstName,
+                lastName = ShippingAddress.LastName,
+                address = ShippingAddress.StreetAddress,
+                city = ShippingAddress.City,
+                state = ShippingAddress.State,
+                zip = ShippingAddress.ZipCode
             };
 
             return address;

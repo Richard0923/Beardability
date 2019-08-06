@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Models.Interfaces
 {
-    interface IPayment
+    public interface IPayment
     {
        string Run();
     }
