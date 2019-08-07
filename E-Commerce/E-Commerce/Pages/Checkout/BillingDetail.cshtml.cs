@@ -27,10 +27,11 @@ namespace E_Commerce.Pages.Checkout
         }
 
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
-            string answer = _payment.Run(ShippingAddress);
-            //shipping address turns null once this method is hit 
+            string answer = _payment.Run(ShippingAddress); //need something to check if payment was processed maybe have an if statement for the return string 
+            //NEED TO EMPTY BASKET TABLE ON POST AND SAVE THEM TO A ORDERS  TABLE 
+            return RedirectToPage("Receipt");
         }
 
        
