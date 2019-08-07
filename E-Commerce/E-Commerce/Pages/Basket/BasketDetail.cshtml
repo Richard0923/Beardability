@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Basket</h1>
-
+    <a asp-page="/Checkout/Receipt">Checkout</a>
     <div class="container">
         <div class="row" id="shopping_basket_row">
 
@@ -25,26 +25,24 @@
                 @:<div class="row" id="shopping_basket_row">
                 }
                 <div class="col-sm-4" id="shopping_basket">
-                        <h3><a asp-page="../Shop/ShoppingDetail" asp-route-id="@basketItem.ProductID">@basketItem.Name</a></h3>
-                        <img src="@basketItem.Image)" />
-                        <p>Price: $@basketItem.Price)</p>
-                        <form method="post">
-                            <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
-                            <label for="quanity">Quantity</label>
-                            <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
-                            <button type="submit">Update Quantity</button>
-                        </form>
-                        <form method="post" asp-page-handler="delete">
-                            <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
-                            <button type="submit">Delete From Basket</button>
-                        </form>
+                    <h3><a asp-page="../Shop/ShoppingDetail" asp-route-id="@basketItem.ProductID">@basketItem.Name</a></h3>
+                    <img src="@basketItem.Image)" />
+                    <p>Price: $@basketItem.Price)</p>
+                    <form method="post">
+                        <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
+                        <label for="quanity">Quantity</label>
+                        <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
+                        <button type="submit">Update Quantity</button>
+                    </form>
+                    <form method="post" asp-page-handler="delete">
+                        <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
+                        <button type="submit">Delete From Basket</button>
+                    </form>
                 </div>
                 counter++;
             }
         </div>
-     </div>
-
-                 <a href="@Url.Action("Receipt", "Checkout")">Checkout</a>
+    </div>
 </body>
 </html>
 

@@ -49,6 +49,20 @@
     text-align: center;
 }
 
+/*Styling for Receipt Page*/
+#receipt_deck {
+    text-align: center;
+}
+
+#receipt_card {
+    background-color: hsla(318, 15%, 100%, 0.3);
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5em;
+}
+
+
 /*Styling for Login Page*/
 #login_card {
     font-size: 1.25em;
@@ -76,6 +90,10 @@
 #register_button {
     margin-top: 1em;
 }
+
+
+
+
 
 
 
