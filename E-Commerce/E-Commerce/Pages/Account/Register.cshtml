@@ -1,15 +1,19 @@
 ﻿@page
 @model E_Commerce.Pages.Account.RegisterModel
 @{
+    Layout = "_AdminLayout";
 }
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Register Page</title>
-        <link href="~/StyleSheet.css" rel="stylesheet" />
-    </head>
-    <body>
-            <form class="RegisterForm" method="post">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Register Page</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="card-deck row" id="register_deck">
+            <div class="card mx-auto" style="max-width: 18em" id="register_card">
+                <form class="RegisterForm" method="post">
                     <label asp-for="Input.Email"></label>
                     <input asp-for="Input.Email" />
 
@@ -31,6 +35,9 @@
                     <label asp-for="Input.PasswordConfirmation"></label>
                     <input asp-for="Input.PasswordConfirmation" />
                     <button type="submit">REGISTER ACCOUNT</button>
-            </form>
-    </body>
-    </html>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,9 @@
 ﻿@page  
 @model E_Commerce.Pages.Basket.BasketDetailModel
 @{ 
+        Layout = "_HomePage";
+    int counter = 0;
+
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,26 +16,37 @@
 
     <h1>Basket</h1>
 
-    @foreach (var basketItem in @Model.BasketItems)
-    {
-        <div class="basketItems">
-            <h3><a asp-page="../Shop/ShoppingDetail" asp-route-id="@basketItem.ProductID">@basketItem.Name</a></h3>
-            <img src="@basketItem.Image)" />
-            <p>Price: $@basketItem.Price)</p>
-            <form method="post">
-                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id"/>
-                <label for="quanity">Quantity</label>
-                <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
-                <button type="submit">Update Quantity</button>
-            </form>
-            <form method="post" asp-page-handler="delete">
-                <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id"/>
-                <button type="submit">Delete From Basket</button>
-            </form>
+    <div class="container">
+        <div class="row" id="shopping_basket_row">
+
+            @foreach (var basketItem in @Model.BasketItems)
+            {
+                if (counter != 0 && counter % 3 == 0)
+                {
+                @:</div>
+                @:<div class="row" id="shopping_basket_row">
+                }
+                <div class="col-sm-4" id="shopping_basket">
+                        <h3><a asp-page="../Shop/ShoppingDetail" asp-route-id="@basketItem.ProductID">@basketItem.Name</a></h3>
+                        <img src="@basketItem.Image)" />
+                        <p>Price: $@basketItem.Price)</p>
+                        <form method="post">
+                            <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
+                            <label for="quanity">Quantity</label>
+                            <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
+                            <button type="submit">Update Quantity</button>
+                        </form>
+                        <form method="post" asp-page-handler="delete">
+                            <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
+                            <button type="submit">Delete From Basket</button>
+                        </form>
+                </div>
+                counter++;
+            }
         </div>
-    }
-    
-    <a asp-page="../Checkout/BillingDetail">Checkout</a>
+     </div>
+
+                 <a href="@Url.Action("Receipt", "Checkout")">Checkout</a>
 </body>
 </html>
 

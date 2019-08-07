@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using E_Commerce.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch&display=swap" rel="stylesheet">
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">Beardability</a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div class="loggedIn">
+                    <span> Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value</span>
+                    <a href="@Url.Action("Index", "Home")">Home</a>
+                    <a href="@Url.Action("Shopping", "Shop")">Shop</a>
+                    <a href="@Url.Action("BasketDetail", "Basket")">Basket</a>
+
+                    <form id="logoutButton" asp-page="/Account/Logout">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <div class="loginTags">
+                    <a asp-page="/Account/Login"> Login </a>
+                    <a asp-page="/Account/Register"> Register Account </a>
+                </div>
+            }
+        </nav>
+
+
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

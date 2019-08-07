@@ -1,6 +1,11 @@
 ﻿@page
 @model E_Commerce.Pages.Account.LoginModel
 
+@{
+    Layout = "_AdminLayout";
+}
+
+
 
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -8,14 +13,20 @@
         <link href="~/StyleSheet.css" rel="stylesheet" />
     </head>
     <body>
-        <form class="loginForm" method="post">
-            <label asp-for="Input.Email"></label>
-            <input asp-for="Input.Email" />
+        <div class="container">
+            <div class="card-deck row" id="login_deck">
+                <div class="card mx-auto" style="max-width: 18em" id="login_card">
+                    <form class="loginForm" method="post">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" />
 
-            <label asp-for="Input.Password"></label>
-            <input type="password" asp-for="Input.Password" />
+                        <label asp-for="Input.Password"></label>
+                        <input type="password" asp-for="Input.Password" />
 
-            <button type="submit">Login</button>
-        </form>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
     </html>

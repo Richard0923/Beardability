@@ -17,7 +17,6 @@
     <h1>Whole Lot</h1>
     <div class="container">
         <div class="row" id="shopping_product_row">
-            @*<div class="col-sm">*@
             @foreach (var product in Model.Beards)
             {
                 if (counter != 0 && counter % 3 == 0)
@@ -33,7 +32,6 @@
                 </div>
                 counter++;
             }
-            @*</div>*@
         </div>
     </div>
 </body>
