@@ -15,27 +15,29 @@
         <header>
 
             <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">Beardability</a>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <div class="loggedIn">
-                    <span> Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value</span>
-                    <a href="@Url.Action("Index", "Home")">Home</a>
-                    <a href="@Url.Action("Shopping", "Shop")">Shop</a>
-                    <a href="@Url.Action("BasketDetail", "Basket")">Basket</a>
+                <a class="navbar-brand" asp-page="/Views/Home" id="title_link">Beardability</a>
+                @if (SignInManager.IsSignedIn(User))
+                {
+            <div class="loggedIn">
+                <div>
+                    Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value
+                </div>
+                <br />
+                <a asp-page="/Shop/Shopping">Shop</a>
+                <a asp-page="/Basket/BasketDetail">Basket</a>
 
-                    <form id="logoutButton" asp-page="/Account/Logout">
-                        <button type="submit">Logout</button>
-                    </form>
-                </div>
-            }
-            else
-            {
-                <div class="loginTags">
-                    <a asp-page="/Account/Login"> Login </a>
-                    <a asp-page="/Account/Register"> Register Account </a>
-                </div>
-            }
+                <form id="logoutButton" asp-page="/Account/Logout">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+                }
+                else
+                {
+                    <div class="loginTags">
+                        <a asp-page="/Account/Login"> Login </a>
+                        <a asp-page="/Account/Register"> Register Account </a>
+                    </div>
+                }
             </nav>
 
 

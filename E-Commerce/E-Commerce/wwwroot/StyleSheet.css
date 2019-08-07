@@ -1,8 +1,12 @@
 ﻿body {
-    /*background-color: blue;*/
     background-image: url(http://www.sclance.com/backgrounds/old-time-background/old-time-background_1637809.jpg);
     font-family: 'Cabin Sketch', cursive;
 }
+
+#title_link {
+    font-size: 3em;
+}
+
 
 /*Styling for the Shopping Page*/
 #shopping_product_row {
@@ -10,7 +14,7 @@
 }
 
 #shopping_products {
-    background-color: hsla(318, 15%, 50%, 0.38);
+    background-color: hsla(318, 15%, 100%, 0.3);
     border: 1px solid black;
     border-radius: 5px;
     margin: .5em;
@@ -24,10 +28,11 @@
 }
 
 #detail_product {
-    background-color: hsla(318, 15%, 50%, 0.38);
+    background-color: hsla(318, 15%, 100%, 0.3);
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
+    margin-top: 5em;
 }
 
 /*Styling for the Basket Landing Page*/
@@ -36,7 +41,7 @@
 }
 
 #shopping_basket {
-    background-color: hsla(318, 15%, 50%, 0.38);
+    background-color: hsla(318, 15%, 100%, 0.3);
     border: 1px solid black;
     border-radius: 5px;
     margin: .5em;
@@ -46,21 +51,33 @@
 
 /*Styling for Login Page*/
 #login_card {
+    font-size: 1.25em;
     text-align: center;
     align-items: center;
     margin-top: 10em;
     padding: 2em;
-    background-color: hsla(0, 32%, 50%, 0.77);
+    background-color: hsla(318, 15%, 100%, 0.3);
+}
+
+#login_button {
+    margin-top: 1em;
 }
 
 /*Styling for Register Page*/
 #register_card {
+    font-size: 1.25em;
     text-align: center;
     align-items: center;
     margin-top: 2.5em;
     padding: 2em;
-    background-color: hsla(0, 32%, 50%, 0.77);
+    background-color: hsla(318, 15%, 100%, 0.3);
 }
+
+#register_button {
+    margin-top: 1em;
+}
+
+
 
 
 
