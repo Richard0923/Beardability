@@ -2,7 +2,8 @@
 @model E_Commerce.Pages.Shop.ShoppingModel
 
 @{
-    ViewData["Title"] = "Shopping";
+    Layout = "_HomePage";
+    int counter = 0;
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,16 +15,27 @@
     <a href="@Url.Action("Index", "Home")">Home</a>
 
     <h1>Whole Lot</h1>
-
-    @foreach (var product in Model.Beards)
-    {
-    <div class="shopProduct">
-        <h3>@Html.DisplayFor(productitem => product.Name)</h3>
-        <img src="@Html.DisplayFor(productitem => product.Image)" />
-        <p>Price: $@Html.DisplayFor(productitem => product.Price)</p>
-        <a asp-page="ShoppingDetail" asp-route-id="@product.ID">Details</a>
+    <div class="container">
+        <div class="row" id="shopping_product_row">
+            @*<div class="col-sm">*@
+            @foreach (var product in Model.Beards)
+            {
+                if (counter != 0 && counter % 3 == 0)
+                {
+                @:</div>
+                @:<div class="row" id="shopping_product_row">
+                }
+                <div class="col-sm-4" id="shopping_products">
+                    <h3>@Html.DisplayFor(productitem => product.Name)</h3>
+                    <img src="@Html.DisplayFor(productitem => product.Image)" />
+                    <p>Price: $@Html.DisplayFor(productitem => product.Price)</p>
+                    <a asp-page="ShoppingDetail" asp-route-id="@product.ID">Details</a>
+                </div>
+                counter++;
+            }
+            @*</div>*@
+        </div>
     </div>
-    }
 </body>
 </html>
 
