@@ -8,17 +8,21 @@
 <head>
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
-<div class="shopProduct">
-    <form class="basketButton" method="post">
-        <h3>@Html.DisplayFor(productitem => Model.Beard.Name)</h3>
-        <p>@Html.DisplayFor(productitem => Model.Beard.Sku)</p>
-        <img src="@Html.DisplayFor(productitem =>  Model.Beard.Image)" />
-        <p>@Html.DisplayFor(productitem => Model.Beard.Description)</p>
-        <p>Price: $@Html.DisplayFor(productitem => Model.Beard.Price)</p>
+<div class="container">
+    <div class="card-deck row" id="detail_product_deck">
+        <div class="card mx-auto" style="max-width: 18em" id="detail_product">
+            <form class="basketButton" method="post">
+                <h3>@Html.DisplayFor(productitem => Model.Beard.Name)</h3>
+                <p>@Html.DisplayFor(productitem => Model.Beard.Sku)</p>
+                <img src="@Html.DisplayFor(productitem =>  Model.Beard.Image)" />
+                <p>@Html.DisplayFor(productitem => Model.Beard.Description)</p>
+                <p>Price: $@Html.DisplayFor(productitem => Model.Beard.Price)</p>
 
 
-        <label asp-for="BasketItem.Quanity"></label>
-        <input asp-for="BasketItem.Quanity" />
-        <button type="submit">Add To Basket</button>
-    </form>
+                <label asp-for="BasketItem.Quanity"></label>
+                <input asp-for="BasketItem.Quanity" />
+                <button type="submit">Add To Basket</button>
+            </form>
+        </div>
+    </div>
 </div>
