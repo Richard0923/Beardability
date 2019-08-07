@@ -53,8 +53,14 @@
     background-color: hsla(0, 32%, 50%, 0.77);
 }
 
-
-
+/*Styling for Register Page*/
+#register_card {
+    text-align: center;
+    align-items: center;
+    margin-top: 2.5em;
+    padding: 2em;
+    background-color: hsla(0, 32%, 50%, 0.77);
+}
 
 
 
