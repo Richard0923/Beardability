@@ -1,15 +1,21 @@
 ﻿body {
-    background-color:antiquewhite;
-    
+    /*background-color: blue;*/
+    background-image: url(http://www.sclance.com/backgrounds/old-time-background/old-time-background_1637809.jpg);
+    font-family: 'Cabin Sketch', cursive;
 }
 
-.container {
-    display:grid;
+#shopping_product_row {
+    /*margin: 1em;*/
+    flex-wrap: nowrap;
 }
 
-.col-md-4{
+#shopping_products {
+    background-color: hsla(318, 15%, 50%, 0.38);
     border: 1px solid black;
     border-radius: 5px;
+    margin: .5em;
+    padding: 0;
+    text-align: center;
 }
 
 .loginTags {
