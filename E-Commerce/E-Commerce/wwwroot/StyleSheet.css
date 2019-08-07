@@ -4,8 +4,8 @@
     font-family: 'Cabin Sketch', cursive;
 }
 
+/*Styling for the Shopping Page*/
 #shopping_product_row {
-    /*margin: 1em;*/
     flex-wrap: nowrap;
 }
 
@@ -17,6 +17,54 @@
     padding: 0;
     text-align: center;
 }
+
+/*Styling for the Shopping Detail Page*/
+#detail_product_deck {
+    text-align: center;
+}
+
+#detail_product {
+    background-color: hsla(318, 15%, 50%, 0.38);
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/*Styling for the Basket Landing Page*/
+#shopping_basket_row {
+    flex-wrap: nowrap;
+}
+
+#shopping_basket {
+    background-color: hsla(318, 15%, 50%, 0.38);
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: .5em;
+    padding: 0;
+    text-align: center;
+}
+
+/*Styling for Login Page*/
+#login_card {
+    text-align: center;
+    align-items: center;
+    margin-top: 10em;
+    padding: 2em;
+    background-color: hsla(0, 32%, 50%, 0.77);
+}
+
+/*Styling for Register Page*/
+#register_card {
+    text-align: center;
+    align-items: center;
+    margin-top: 2.5em;
+    padding: 2em;
+    background-color: hsla(0, 32%, 50%, 0.77);
+}
+
+
+
+
 
 .loginTags {
     margin-top: 20px;
