@@ -30,9 +30,9 @@ namespace E_Commerce.Data
                 {
                     ID = 1,
 
-                    Name = "Full Beard",
+                    Name = "The Baron",
 
-                    Sku = "001Bear",
+                    Sku = "Bear001",
 
                     Price = 10.00M,
 
@@ -160,16 +160,6 @@ namespace E_Commerce.Data
                     Description = "Stick on mutton chops. Glue not included",
 
                     Image = "http://placebeard.it/g/100/125"
-                });
-
-           //Basket seeded data  
-            modelBuilder.Entity<Basket>().HasData(
-
-                new Basket
-                {
-                    ID = 1,
-
-                    Email = "admin@admin.com"
                 });
 
         }
