@@ -2,26 +2,30 @@
 @model E_Commerce.Pages.Checkout.Receipt.ReceiptModel
 @{
     ViewData["Title"] = "Receipt";
+    Layout = "_HomePage";
+
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Receipt</title>
-    <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <a href="@Url.Action("Index", "Home")">Home</a>
 
     <h1>Your Receipt</h1>
 
-    @foreach (var product in Model.PurchaseItems)
-    {
-        <div class="shopProduct">
-            <h3>@Html.DisplayFor(productitem => product.Name)</h3>
-            <img src="@Html.DisplayFor(productitem => product.Image)" />
-            <p>Price: $@Html.DisplayFor(productitem => product.Price)</p>
-            <p>@Html.DisplayFor(productitem => product.Quanity)</p>
+    <div class="card-deck row" id="receipt_deck">
+        <div class="card mx-auto" style="max-width: 18em" id="receipt_card">
+            @foreach (var product in Model.PurchaseItems)
+            {
+                <div class="shopProduct">
+                    <h3>@Html.DisplayFor(productitem => product.Name)</h3>
+                    <img src="@Html.DisplayFor(productitem => product.Image)" />
+                    <p>Price: $@Html.DisplayFor(productitem => product.Price)</p>
+                    <p>@Html.DisplayFor(productitem => product.Quanity)</p>
+                </div>
+            }
         </div>
-    }
+    </div>
 </body>
 </html>
