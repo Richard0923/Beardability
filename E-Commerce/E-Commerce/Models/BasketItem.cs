@@ -31,6 +31,11 @@ namespace E_Commerce.Models
 
         //Number of Items desired by the user to buy
         public int Quanity { get; set; }
+
+        // Nav properties
+        public Basket Basket { get; set; }
+
+        public Product Product { get; set; }
     }
 
 }

@@ -21,5 +21,10 @@ namespace E_Commerce.Models
         public string Description { get; set; }
 
         public string Image { get; set; }
+
+        // Nav properties 
+        public ICollection<BasketItem> BasketItem { get; set; }
+
+        public ICollection<OrderItem> OrderItem { get; set; }
     }
 }
