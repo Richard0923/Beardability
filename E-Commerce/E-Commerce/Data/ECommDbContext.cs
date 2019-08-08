@@ -38,9 +38,9 @@ namespace E_Commerce.Data
                 {
                     ID = 1,
 
-                    Name = "Full Beard",
+                    Name = "The Baron",
 
-                    Sku = "001Bear",
+                    Sku = "Bear001",
 
                     Price = 10.00M,
 

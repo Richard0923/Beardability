@@ -3,6 +3,8 @@
 @inject SignInManager<ApplicationUser> SignInManager
 <!DOCTYPE html>
 
+@*Home Landing Page*@
+
     <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -14,28 +16,32 @@
     <body>
         <header>
 
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" asp-page="/Views/Home" id="title_link">Beardability</a>
+            <nav class="navbar navbar-light sticky-top" id="nav_bar">
+                <a id="beardo_container" asp-page="/Views/Home"><img  id="beardo_img" src="~/Assets/beardo.png" /></a>
+                <br />
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <div class="loggedIn">
-                        <div>Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value
-                        </div>
-                        <br />
-                        <a asp-page="/Shop/Shopping">Shop</a>
-                        <a asp-page="/Basket/BasketDetail">Basket</a>
-
-                        <form id="logoutButton" asp-page="/Account/Logout">
-                            <button type="submit">Logout</button>
-                        </form>
+            <div class="loggedIn">
+                <div class="container">
+                    <div id="weclome_message">
+                        Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value
                     </div>
+                    <form id="logoutButton" asp-page="/Account/Logout">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
+                <div class="container" id="shopping_container">
+                    <div id="shopping_link"><a asp-page="/Shop/Shopping">Store</a></div>
+                    <div id="basket_link"><a asp-page="/Basket/BasketDetail"> Your Basket</a></div>
+                </div>
                 }
                 else
                 {
-                    <div class="loginTags">
-                        <a asp-page="/Account/Login"> Login </a>
-                        <a asp-page="/Account/Register"> Register Account </a>
-                    </div>
+                <div class="container" id="link_container">
+                    <div id="login_link"> <a  asp-page="/Account/Login"> Login </a></div>
+                    <div id="register_link"> <a  asp-page="/Account/Register"> Register Account </a></div>
+                </div>
                 }
             </nav>
 
