@@ -4,28 +4,17 @@ body {
     font-family: 'Cabin Sketch', cursive;
 }
 
-.loginTags {
-    margin-top: 20px;
-    margin-right: 20px;
-    float: right;
-    display: inline-grid;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 10px;
+h1 {
+    text-align:center;
+    margin-top: .5em;
 }
 
-.loggedIn {
-    margin-top: 20px;
-    margin-right: 20px;
-    float: right;
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 10px;
+#weclome_message {
+    font-size: 2em;
 }
 
 #logoutButton {
-    grid-column: 2/3;
-    grid-row: 2;
+    float: right;
 }
 
 .RegisterForm {
@@ -40,9 +29,44 @@ body {
     width: 200px;
 }
 
-#title_link {
-    font-size: 3em;
-    /*margin:auto;*/
+#beardo_container {
+
+}
+
+#beardo_img {
+    width: 30%;
+    position: relative;
+    margin-left: 56%;
+}
+
+#link_container {
+    padding-left:0;
+    padding-right:0;
+    margin-left:0;
+    margin-right:0;
+}
+#login_link {
+    position:absolute;
+    font-size: 1.25em;
+    padding-bottom: 1em;
+}
+
+#register_link {
+    position: absolute;
+    margin-left: 80%;
+    font-size: 1.25em;
+    padding-bottom: 1em;
+}
+
+#shopping_container {
+    position:absolute;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content:flex-start;
+    display:inline-grid;
+    grid-template-rows: 1fr, 1fr;
 }
 
 #nav_bar {
@@ -81,7 +105,15 @@ a:hover {
     margin: .5em;
     padding: 0;
     text-align: center;
+    -webkit-box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
+    -moz-box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
+    box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
 }
+
+#shopping_products:hover {
+    background-color: hsla(272, 14%, 27%, 0.38);
+}
+
 
 /*Styling for the Shopping Detail Page*/
 #detail_product_deck {
@@ -94,6 +126,9 @@ a:hover {
     border-radius: 5px;
     text-align: center;
     margin-top: 5em;
+    -webkit-box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
+    -moz-box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
+    box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
 }
 
 /*Styling for the Basket Landing Page*/
@@ -108,6 +143,9 @@ a:hover {
     margin: .5em;
     padding: 0;
     text-align: center;
+    -webkit-box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
+    -moz-box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
+    box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
 }
 
 #shopping_basket:hover {
