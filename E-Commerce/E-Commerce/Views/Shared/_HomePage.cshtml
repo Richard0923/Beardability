@@ -3,6 +3,8 @@
 @inject SignInManager<ApplicationUser> SignInManager
 <!DOCTYPE html>
 
+@*Home Landing Page*@
+
     <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -14,8 +16,9 @@
     <body>
         <header>
 
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar navbar-light" id="nav_bar">
                 <a class="navbar-brand" asp-page="/Views/Home" id="title_link">Beardability</a>
+                <div><img href="https://cdn.pixabay.com/photo/2018/03/26/18/20/man-3263509__340.png" /></div>
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <div class="loggedIn">

@@ -1,11 +1,72 @@
-﻿body {
+﻿/*General Styling across all pages*/
+body {
     background-image: url(http://www.sclance.com/backgrounds/old-time-background/old-time-background_1637809.jpg);
     font-family: 'Cabin Sketch', cursive;
 }
 
+.loginTags {
+    margin-top: 20px;
+    margin-right: 20px;
+    float: right;
+    display: inline-grid;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+.loggedIn {
+    margin-top: 20px;
+    margin-right: 20px;
+    float: right;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 10px;
+}
+
+#logoutButton {
+    grid-column: 2/3;
+    grid-row: 2;
+}
+
+.RegisterForm {
+    display: grid;
+    margin: 0;
+    width: 200px;
+}
+
+.loginForm {
+    display: grid;
+    margin: 0;
+    width: 200px;
+}
+
 #title_link {
     font-size: 3em;
+    /*margin:auto;*/
 }
+
+#nav_bar {
+    background-color: hsla(272, 14%, 27%, 0.38);
+    border-bottom: .1em solid black;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(10,61,148,.6);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(10,61,148,.6);
+    box-shadow: 0px 5px 5px 0px rgba(10,61,148,.6);
+}
+
+a {
+    color: black;
+    font-size: 1.5em;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: seagreen;
+    font-family:'Cabin Sketch', cursive;
+}
+
 
 
 /*Styling for the Shopping Page*/
@@ -49,10 +110,14 @@
     text-align: center;
 }
 
-/*Styling for Receipt Page*/
-#receipt_deck {
-    text-align: center;
+#shopping_basket:hover {
+    background-color: hsla(272, 14%, 27%, 0.38);
 }
+
+    /*Styling for Receipt Page*/
+    #receipt_deck {
+        text-align: center;
+    }
 
 #receipt_card {
     background-color: hsla(318, 15%, 100%, 0.3);
@@ -89,52 +154,6 @@
 
 #register_button {
     margin-top: 1em;
-}
-
-
-
-
-
-
-
-
-
-
-
-.loginTags {
-    margin-top: 20px;
-    margin-right: 20px;
-    float: right;
-    display: inline-grid;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 10px;
-}
-
-.loggedIn {
-    margin-top: 20px;
-    margin-right: 20px;
-    float: right;
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 10px;
-}
-
-#logoutButton{
-    grid-column: 2/3;
-    grid-row: 2;
-}
-
-.RegisterForm {
-    display: grid;
-    margin: 0;
-    width: 200px;
-}
-
-.loginForm {
-    display: grid;
-    margin: 0;
-    width: 200px;
 }
 
 
