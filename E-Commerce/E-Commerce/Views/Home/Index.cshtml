@@ -1,18 +1,23 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@using E_Commerce.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+
 @{
     Layout = "_HomePage";
 }
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title></title>
-    </head>
-    <body>
-        @*<h1>Beardability</h1>
-        <h3>Your One Stop Shop for Facial Hair Bliss</h3>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Your One Stop Shop for Facial Hair Bliss</h1>
+    @if (SignInManager.IsSignedIn(User))
+    {
 
-        <div class="container"></div>*@
-
-        @*@await Component.InvokeAsync("Basket", 10);*@
-    </body>
-    </html>
+        <div class="container">
+            @await Component.InvokeAsync("Basket", 10);
+        </div>
+    }
+</body>
+</html>
