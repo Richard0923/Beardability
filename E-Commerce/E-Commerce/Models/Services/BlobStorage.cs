@@ -24,7 +24,10 @@ namespace E_Commerce.Models.Services
 
         public async Task<CloudBlob> GetBlob(string imageName, string containerName)
         {
-            throw new NotImplementedException();
+            var container = await GetContainer(containerName);
+            CloudBlob blob = container.GetBlobReference(imageName);
+
+            return blob;
         }
 
         public async Task<CloudBlobContainer> GetContainer(string containerName)
