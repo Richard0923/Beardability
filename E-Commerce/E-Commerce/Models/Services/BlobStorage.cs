@@ -41,7 +41,8 @@ namespace E_Commerce.Models.Services
 
         public void UploadFile(CloudBlobContainer container, string fileName, string filePath)
         {
-            throw new NotImplementedException();
+            CloudBlockBlob blob = container.GetBlockBlobReference(fileName);
+            blob.UploadFromFileAsync(filePath);
         }
     }
 }
