@@ -188,6 +188,10 @@ a:hover {
     width:50%;
 }
 
+#phone_input {
+    width: 50%;
+}
+
 #register_button {
     margin-top: 1em;
 }
