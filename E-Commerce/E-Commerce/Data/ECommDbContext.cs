@@ -32,134 +32,208 @@ namespace E_Commerce.Data
 
                     Name = "The Baron",
 
-                    Sku = "Bear001",
+                    Sku = "BEAR001",
 
                     Price = 10.00M,
 
-                    Description = "Stick on full beard. Glue not included",
+                    Description = "Stick on beard and mustache. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/baron.png"
                 },
 
+                new Product
+                {
+                    ID = 2,
+
+                    Name = "The Butcher",
+
+                    Sku = "MUTT001",
+
+                    Price = 8.00M,
+
+                    Description = "Stick on mustache and mutton-chops. Glue not included",
+
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/butcher.png"
+                },
 
                 new Product
                 {
                     ID = 3,
 
-                    Name = "Soul Patch",
+                    Name = "The Czar",
 
-                    Sku = "003Soul",
+                    Sku = "BEAR002",
 
-                    Price = 2.00M,
+                    Price = 10.00M,
 
-                    Description = "Stick on soul patch. Glue not included",
+                    Description = "Stick on beard and mustache. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/czar.png"
                 },
 
                 new Product
                 {
                     ID = 4,
 
-                    Name = "Old School Hook Beard",
+                    Name = "The Dandy",
 
-                    Sku = "004Hook",
+                    Sku = "BEAR003",
 
                     Price = 10.00M,
 
-                    Description = "Full beard with hooks to hang off of ears.",
+                    Description = "Stick on beard and mustache. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/dandy.png"
                 },
 
                 new Product
                 {
                     ID = 5,
 
-                    Name = "Long Fu-Man-Chu Mustache",
+                    Name = "The Barrister",
 
-                    Sku = "005Fu",
+                    Sku = "BEAR005",
 
-                    Price = 8.00M,
+                    Price = 10.00M,
 
-                    Description = "Long Fu-Man-Chu stick on mustache. Glue not included.",
+                    Description = "Stick on beard and mustache. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/barrister.png"
                 },
 
                 new Product
                 {
                     ID = 6,
 
-                    Name = "Short Fu-Man-Chu Mustache",
+                    Name = "The Duke",
 
-                    Sku = "006FuS",
+                    Sku = "MUST001",
 
                     Price = 5.00M,
 
-                    Description = "Short Fu-Man-Chu stick on mustache. Glue not included",
+                    Description = "Stick on mustache and sideburns. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/duke.png"
                 },
 
                 new Product
                 {
                     ID = 7,
 
-                    Name = "5'oclock Shadow Spray",
+                    Name = "The Empereur",
 
-                    Sku = "007Shadow",
+                    Sku = "GOAT001",
 
-                    Price = 15.00M,
+                    Price = 7.00M,
 
-                    Description = "Spray that allows for realistic looking 5'oclock shadow. Alcohol soluble.",
+                    Description = "Stick on goatee and mustache. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/empereur.png"
                 },
 
                 new Product
                 {
                     ID = 8,
 
-                    Name = "Facial Glue",
+                    Name = "The Farmer",
 
-                    Sku = "008Glue",
+                    Sku = "BEAR006",
 
-                    Price = 5.00M,
+                    Price = 8.00M,
 
-                    Description = "Glue for all stick on facial hair. Alcohol soluble.",
+                    Description = "Stick on beard. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/farmer.png"
                 },
 
                 new Product
                 {
                     ID = 9,
 
-                    Name = "Facial Hair Comb",
+                    Name = "The Kaiser",
 
-                    Sku = "009Comb",
+                    Sku = "MUTT002",
 
-                    Price = 5.00M,
+                    Price = 8.00M,
 
-                    Description = "Specially designed comb for facial hair.",
+                    Description = "Stick on mutton-chops and mustache. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/kaiser.png"
                 },
 
                 new Product
                 {
                     ID = 10,
 
-                    Name = "Mutton Chops",
+                    Name = "The Magician",
 
-                    Sku = "010Chops",
+                    Sku = "GOAT002",
 
                     Price = 7.00M,
 
-                    Description = "Stick on mutton chops. Glue not included",
+                    Description = "Stick on goatee and mustache. Glue not included",
 
-                    Image = "http://placebeard.it/g/100/125"
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/magician.png"
+                },
+
+                new Product
+                {
+                    ID = 11,
+
+                    Name = "The Mariner",
+
+                    Sku = "BEAR007",
+
+                    Price = 10.00M,
+
+                    Description = "Stick on beard and mustache. Glue not included",
+
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/mariner.png"
+                },
+
+                new Product
+                {
+                    ID = 12,
+
+                    Name = "Facial Glue",
+
+                    Sku = "ACCE001",
+
+                    Price = 5.00M,
+
+                    Description = "Glue for all stick on facial hair. Alcohol soluble.",
+
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/facial_glue.jpg"
+                },
+
+                new Product
+                {
+                    ID = 13,
+
+                    Name = "Gentlemen's Beard Oil",
+
+                    Sku = "GROO001",
+
+                    Price = 5.00M,
+
+                    Description = "Beard oil for every gentleman.",
+
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/beard_oil.jpg"
+                },
+
+                new Product
+                {
+                    ID = 14,
+
+                    Name = "Comb and Brush Set",
+
+                    Sku = "GROO002",
+
+                    Price = 8.00M,
+
+                    Description = "Specially designed comb and brush for facial hair.",
+
+                    Image = "https://beardibilityblob.blob.core.windows.net/productimages/brush_set.jpg"
                 });
 
         }
