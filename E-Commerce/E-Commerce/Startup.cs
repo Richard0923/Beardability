@@ -69,6 +69,7 @@ namespace E_Commerce
             services.AddScoped<IBasket, BasketManager>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IPayment, AuthNetPayment>();
+            services.AddScoped<IBlobManager, BlobStorage>();
 
         }
 
