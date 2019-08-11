@@ -2,32 +2,54 @@
 @model E_Commerce.Pages.Checkout.BillingDetailModel
 @{
     ViewData["Title"] = "BillingDetail";
+    Layout = "_HomePage";
+
 }
 
 <h1>BillingDetail</h1>
-
-<form method="post">
-    <label asp-for="ShippingAddress.FirstName"></label>
-    <input asp-for="ShippingAddress.FirstName" />
-
-    <label asp-for="ShippingAddress.LastName"></label>
-    <input asp-for="ShippingAddress.LastName" />
-
-    <label asp-for="ShippingAddress.StreetAddress"></label>
-    <input asp-for="ShippingAddress.StreetAddress" />
-
-    <label asp-for="ShippingAddress.City"></label>
-    <input asp-for="ShippingAddress.City" />
-
-    <label asp-for="ShippingAddress.State"></label>
-    <input asp-for="ShippingAddress.State" />
-
-    <label asp-for="ShippingAddress.ZipCode"></label>
-    <input asp-for="ShippingAddress.ZipCode" />
-    
-    <label asp-for="ShippingAddress.CreditCard"></label>
-    <select asp-for="ShippingAddress.CreditCard" asp-items="@Html.GetEnumSelectList(typeof(E_Commerce.Models.ViewModels.CreditCardtype))"></select>
-    <span asp-validation-for="ShippingAddress.CreditCard"></span>
-    <button type="submit">Pay Now</button>
+<div class="container">
+    <div class="card-deck row" id="billing_deck">
+        <div class="card mx-auto" style="max-width: 32em" id="billing_card">
+            <form  method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="ShippingAddress.FirstName" for="first_name_billing" >First Name</label>
+                        <input asp-for="ShippingAddress.FirstName" type="text" class="form-control" id="first_name_billing" placeholder="First Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ShippingAddress.LastName" for="last_name_billing">Last Name</label>
+                        <input asp-for="ShippingAddress.LastName" type="text" class="form-control" id="last_name_billing" placeholder="Last Name">
+                     </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-10">
+                        <label asp-for="ShippingAddress.StreetAddress" for="street_address_billing" >Street Address</label>
+                        <input asp-for="ShippingAddress.StreetAddress" type="text" class="form-control" id="street_address_billing" placeholder="Address">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label asp-for="ShippingAddress.City" for="city_billing">City</label>
+                        <input asp-for="ShippingAddress.City" type="text" class="form-control" id="city_billing" placeholder="City">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="ShippingAddress.State" for="state_billing">State</label>
+                        <input asp-for="ShippingAddress.State" type="text" class="form-control" id="state_billing" placeholder="State">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label asp-for="ShippingAddress.ZipCode" for="zip_code_billing" >Zip Code</label>
+                        <input asp-for="ShippingAddress.ZipCode" type="text" class="form-control" id="zip_code_billing" placeholder="Zip Code">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="form-group col-sm-1">
+                        <label asp-for="ShippingAddress.CreditCard"></label>
+                        <select asp-for="ShippingAddress.CreditCard" asp-items="@Html.GetEnumSelectList(typeof(E_Commerce.Models.ViewModels.CreditCardtype))"></select>
+                        <span asp-validation-for="ShippingAddress.CreditCard"></span>
+                    </div>
+                </div>
+                    <button id="billing_button" type="submit">PAY Me Now</button>
 </form>
-
+        </div>
+    </div>
+</div>

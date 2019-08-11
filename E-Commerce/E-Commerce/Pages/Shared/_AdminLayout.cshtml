@@ -16,22 +16,23 @@
 
         <nav class="navbar navbar-light sticky-top" id="nav_bar">
             <a asp-page="/Views/Home"><img id="beardo_img" src="~/Assets/beardo.png" /></a>
-            @if (SignInManager.IsSignedIn(User))
+            @if (User.IsInRole("Admin"))
             {
                 <div class="loggedIn">
                     <div class="container">
                         <div id="weclome_message">
                             Welcome @User.Claims.FirstOrDefault(greet => greet.Type == "FullName").Value
                         </div>
+                        <a asp-page="/Admin/AdminDashboard">Update Store</a>
                         <form id="logoutButton" asp-page="/Account/Logout">
                             <button type="submit">Logout</button>
                         </form>
                     </div>
                 </div>
-                <div class="container" id="shopping_container">
+                @*<div class="container" id="shopping_container">
                     <div id="shopping_link"><a asp-page="/Shop/Shopping">Store</a></div>
                     <div id="basket_link"><a asp-page="/Basket/BasketDetail"> Your Basket</a></div>
-                </div>
+                </div>*@
             }
             else
             {

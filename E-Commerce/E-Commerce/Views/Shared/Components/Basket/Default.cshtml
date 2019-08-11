@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<E_Commerce.Models.BasketItem>
 
+@{ 
+    int counter = 0;
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -9,13 +13,28 @@
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
+
+
     Items in your Basket:
-    @foreach (var items in Model)
-    {
-        <h2>Name: @items.Name</h2>
-        <img src="@items.Image" />
-        <p>Price: @items.Price</p>
-        <p>Quanity: @items.Quanity</p>
-    }
+    <div class="container">
+        <div class="row" id="basket_view_component">
+            @foreach (var items in Model)
+            {
+                if (counter != 0 && counter % 3 == 0)
+                {
+                @:</div>
+                @:<div class="row" id="basket_component_row">
+                }
+                <div class="col-sm-4">
+                    <h2>Name: @items.Name</h2>
+                    <img src="@items.Image" />
+                    <p>Price: @items.Price</p>
+                    <p>Quanity: @items.Quanity</p>
+                </div>
+                counter++;
+            }
+        </div>
+        <a asp-page="/Checkout/BillingDetail">Checkout</a>
+    </div>
 </body>
 </html>

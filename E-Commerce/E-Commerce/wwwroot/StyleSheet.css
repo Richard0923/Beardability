@@ -1,4 +1,4 @@
-﻿/*General Styling across all pages*/
+﻿/*General Styling*/
 body {
     background-image: url(http://www.sclance.com/backgrounds/old-time-background/old-time-background_1637809.jpg);
     font-family: 'Cabin Sketch', cursive;
@@ -9,24 +9,17 @@ h1 {
     margin-top: .5em;
 }
 
+input:focus {
+    background-color: hsla(244, 100%, 49%, 0.57);
+    color: whitesmoke;
+}
+
 #weclome_message {
     font-size: 2em;
 }
 
 #logoutButton {
     float: right;
-}
-
-.RegisterForm {
-    display: grid;
-    margin: 0;
-    width: 200px;
-}
-
-.loginForm {
-    display: grid;
-    margin: 0;
-    width: 200px;
 }
 
 #beardo_container {
@@ -93,7 +86,7 @@ a:hover {
 
 
 
-/*Styling for the Shopping Page*/
+/*Shopping Page*/
 #shopping_product_row {
     flex-wrap: nowrap;
 }
@@ -115,7 +108,7 @@ a:hover {
 }
 
 
-/*Styling for the Shopping Detail Page*/
+/*Shopping Detail Page*/
 #detail_product_deck {
     text-align: center;
 }
@@ -131,7 +124,7 @@ a:hover {
     box-shadow: 0px 5px 5px 1px rgba(10,61,148,.6);
 }
 
-/*Styling for the Basket Landing Page*/
+/*Basket Landing Page*/
 #shopping_basket_row {
     flex-wrap: nowrap;
 }
@@ -152,11 +145,7 @@ a:hover {
     background-color: hsla(272, 14%, 27%, 0.38);
 }
 
-    /*Styling for Receipt Page*/
-    #receipt_deck {
-        text-align: center;
-    }
-
+/*Receipt Page*/
 #receipt_card {
     background-color: hsla(318, 15%, 100%, 0.3);
     border: 1px solid black;
@@ -166,34 +155,66 @@ a:hover {
 }
 
 
-/*Styling for Login Page*/
+/*Login Page*/
+.loginForm {
+    display: grid;
+    margin: 0;
+    width: 200px;
+}
+
 #login_card {
     font-size: 1.25em;
     text-align: center;
     align-items: center;
-    margin-top: 10em;
+    margin-top: 5em;
     padding: 2em;
     background-color: hsla(318, 15%, 100%, 0.3);
 }
+
 
 #login_button {
     margin-top: 1em;
 }
 
-/*Styling for Register Page*/
+/*Register Page*/
 #register_card {
     font-size: 1.25em;
-    text-align: center;
-    align-items: center;
     margin-top: 2.5em;
     padding: 2em;
     background-color: hsla(318, 15%, 100%, 0.3);
+}  
+    
+#dob_input {
+    width:50%;
+}
+
+#phone_input {
+    width: 50%;
 }
 
 #register_button {
     margin-top: 1em;
 }
 
+/*Billing Page*/
+.BillingForm {
+    display: grid;
+    margin: 0;
+    width: 200px;
+    grid-template-columns: 1fr, 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr;
+}
+
+#billing_card {
+    font-size: 1.25em;
+    margin-top: 2.5em;
+    padding: 2em;
+    background-color: hsla(318, 15%, 100%, 0.3);
+}  
+
+#billing_button {
+    margin-top: 1em;
+}
 
 
 
