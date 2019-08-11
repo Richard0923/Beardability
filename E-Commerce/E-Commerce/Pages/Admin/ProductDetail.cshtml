@@ -13,28 +13,22 @@
     <body>
         <h1>Product Detail</h1>
         <div>
-            <div>
-                <div>
-                    <form method="post" asp-page-handler="update">
-                        <input type="hidden" asp-for="Product.ID" value="@Model.Product.ID" name="product" />
-                        <label for="name">Name</label>
-                        <input type="text" asp-for="Product.Name" value="@Model.Product.Name" name="name"/>
-                        <label for="sku">SKU</label>
-                        <input type="text" asp-for="Product.Sku" value="@Model.Product.Sku" name="sku"/>
-                        <label for="price">Price</label>
-                        <input type="number" asp-for="Product.Price" value="@Model.Product.Price" name="price"/>
-                        <label for="description">Description</label>
-                        <input type="text" asp-for="Product.Description" value="@Model.Product.Description" name="description"/>
+            <form method="post" asp-page-handler="update">
+                <input type="hidden" asp-for="Product.ID" value="@Model.Product.ID" name="product" />
+                <label for="name">Name</label>
+                <input type="text" asp-for="Product.Name" value="@Model.Product.Name" name="name"/>
+                <label for="sku">SKU</label>
+                <input type="text" asp-for="Product.Sku" value="@Model.Product.Sku" name="sku"/>
+                <label for="price">Price</label>
+                <input type="number" asp-for="Product.Price" value="@Model.Product.Price" name="price"/>
+                <label for="description">Description</label>
+                <input type="text" asp-for="Product.Description" value="@Model.Product.Description" name="description"/>
+                <label for=" image">Image</label>
+                <input type="file" asp-for="Product.Image" name="image"/>
 
-                        <button type="submit">Update Product</button>
-                        <label for=" image">Image</label>
-                        <input type="file" asp-for="Product.Image" name="image"/>
-
-                        <button type="submit">Save</button>
-                        <button type="submit">Delete Product</button>
-                    </form>
-                </div>
-            </div>
+                <button type="submit">Save</button>
+                <button type="submit">Delete Product</button>
+            </form>  
         </div>
     </body>
     </html>

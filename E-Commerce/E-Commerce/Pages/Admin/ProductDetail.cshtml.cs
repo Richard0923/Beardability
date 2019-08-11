@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using E_Commerce.Models;
 using E_Commerce.Models.Interfaces;
+using E_Commerce.Models.Services;
 using E_Commerce.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,10 +23,10 @@ namespace E_Commerce.Pages.Admin
         public IInventory _context;
         public IBlobManager _blob;
 
-        public ProductDetailModel(IInventory context, IBlobManager blob)
+        public ProductDetailModel(IInventory context, IBlobManager blobManager)
         {
             _context = context;
-            _blob = blob;
+            _blob = blobManager;
         }
 
         [FromRoute]
@@ -35,6 +37,7 @@ namespace E_Commerce.Pages.Admin
 
         [BindProperty]
         public IFormFile Image { get; set; }
+        public Blob BlobImage { get; set; }
 
         /// <summary>
         /// Retrieve product by it's ID.
@@ -46,37 +49,11 @@ namespace E_Commerce.Pages.Admin
             Product = await _context.GetItemByIDAsync(id) ?? new Product();
         }
 
-        public async Task<string> Blob(BlobViewModel blobVM)
-        {
-            var URL = "";
-
-            if (ModelState.IsValid)
-            {
-                var filePath = Path.GetTempFileName();
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await blobVM.Image.CopyToAsync(stream);
-                };
-
-                var container = await _blob.GetContainer("products");
-
-                // upload the image
-                _blob.UploadFile(container, blobVM.Image.FileName, filePath);
-
-                CloudBlob blob = await _blob.GetBlob(blobVM.Image.FileName, container.Name);
-
-                URL = blob.Uri.ToString();
-            }
-
-            return URL;
-        }
-
         /// <summary>
         /// Update record of product with new details
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> OnPostUpdate()
+        public async Task<IActionResult> OnPost()
         {
             var idProduct = Request.Form["product"];
             int productid = Convert.ToInt32(idProduct);
@@ -101,7 +78,7 @@ namespace E_Commerce.Pages.Admin
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await Image.CopyToAsync(stream);
+                    await _blob.Image.CopyToAsync(stream);
                 };
 
                 var container = await _blob.GetContainer("products");
