@@ -1,7 +1,7 @@
 ﻿@page
 @model E_Commerce.Pages.Admin.ProductDetailModel
 @{
-    int counter = 0;
+
 }
 
 @if (User.IsInRole("Admin"))
@@ -11,36 +11,29 @@
         <title>Product Detail</title>
     </head>
     <body>
-        <h1>Basket</h1>
-        <div class="container">
-            <div >
-                @foreach (var basketItem in @Model.BasketItems)
-                {
-                    if (counter != 0 && counter % 3 == 0)
-                    {
-                    @:</div>
-                    @:<div class="row" id="shopping_basket_row">
-                    }
-                    <div class="col-sm-4" id="shopping_basket">
-                        <h3><a asp-page="../Shop/ShoppingDetail" asp-route-id="@basketItem.ProductID">@basketItem.Name</a></h3>
-                        <img src="@basketItem.Image)" />
-                        <p>Price: $@basketItem.Price)</p>
-                        <form method="post">
-                            <input type="hidden" asp-for="@basketItem.BasketID" value="@basketItem.BasketID" name="basket" />
-                            <input type="hidden" asp-for="@basketItem.ProductID" value="@basketItem.ProductID" name="product" />
+        <h1>Product Detail</h1>
+        <div>
+            <div>
+                <div>
+                    <form method="post" asp-page-handler="update">
+                        <input type="hidden" asp-for="Product.ID" value="@Model.Product.ID" name="product" />
+                        <label for="name">Name</label>
+                        <input type="text" asp-for="Product.Name" value="@Model.Product.Name" name="name"/>
+                        <label for="sku">SKU</label>
+                        <input type="text" asp-for="Product.Sku" value="@Model.Product.Sku" name="sku"/>
+                        <label for="price">Price</label>
+                        <input type="number" asp-for="Product.Price" value="@Model.Product.Price" name="price"/>
+                        <label for="description">Description</label>
+                        <input type="text" asp-for="Product.Description" value="@Model.Product.Description" name="description"/>
 
-                            <label for="quanity">Quantity</label>
-                            <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
-                            <button type="submit">Update Quantity</button>
-                        </form>
-                        <form method="post" asp-page-handler="delete">
-                            <input type="hidden" asp-for="@basketItem.BasketID" value="@basketItem.BasketID" name="deletebasket" />
-                            <input type="hidden" asp-for="@basketItem.ProductID" value="@basketItem.ProductID" name="deleteproduct" />
-                            <button type="submit">Delete From Basket</button>
-                        </form>
-                    </div>
-                    counter++;
-                }
+                        <button type="submit">Update Product</button>
+                        <label for=" image">Image</label>
+                        <input type="file" asp-for="Product.Image" name="image"/>
+
+                        <button type="submit">Save</button>
+                        <button type="submit">Delete Product</button>
+                    </form>
+                </div>
             </div>
         </div>
     </body>

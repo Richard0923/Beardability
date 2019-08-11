@@ -9,7 +9,6 @@ namespace E_Commerce.Pages.Admin
 {
     public class AdminDashboardModel : PageModel
     {
-        private 
         public void OnGet()
         {
         }

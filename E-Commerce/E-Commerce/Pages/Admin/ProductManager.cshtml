@@ -1,8 +1,6 @@
 ﻿@page
 @model E_Commerce.Pages.Admin.ProductManagerModel
 @{
-    
-    int counter = 0;
 }
 
 @if (User.IsInRole("Admin"))
@@ -13,23 +11,17 @@
     </head>
     <body>
         <h1>All Products</h1>
-        <a asp-page="AddProduct">Add New Product</a>
+        <a asp-page="ProductDetail">Add New Product</a>
         <div class="container">
             <div >
                 @foreach (var product in Model.Products)
                 {
-                    if (counter != 0 && counter % 3 == 0)
-                    {
-                    @:</div>
-                    @:<div class="row" id="shopping_product_row">
-                    }
-                    <div class="col-sm-4" id="shopping_products">
+                    <div>
                         <h3>@Html.DisplayFor(productitem => product.Name)</h3>
                         <img src="@Html.DisplayFor(productitem => product.Image)" />
-                        <p>Price: $@Html.DisplayFor(productitem => product.Price)</p>
-                        <a asp-page="ShoppingDetail" asp-route-id="@product.ID">Details</a>
+                        <p>Price: @Html.DisplayFor(productitem => product.Price)</p>
+                        <a asp-page="ProductDetail" asp-route-id="@product.ID">Details</a>
                     </div>
-                    counter++;
                 }
             </div>
         </div>
