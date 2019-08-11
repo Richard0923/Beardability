@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace E_Commerce.Migrations
 {
-    public partial class AddingOrdersTable : Migration
+    public partial class FixingOrderTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -114,15 +114,20 @@ namespace E_Commerce.Migrations
                 columns: new[] { "ID", "Description", "Image", "Name", "Price", "Sku" },
                 values: new object[,]
                 {
-                    { 1, "Stick on full beard. Glue not included", "http://placebeard.it/g/100/125", "The Baron", 10.00m, "Bear001" },
-                    { 3, "Stick on soul patch. Glue not included", "http://placebeard.it/g/100/125", "Soul Patch", 2.00m, "003Soul" },
-                    { 4, "Full beard with hooks to hang off of ears.", "http://placebeard.it/g/100/125", "Old School Hook Beard", 10.00m, "004Hook" },
-                    { 5, "Long Fu-Man-Chu stick on mustache. Glue not included.", "http://placebeard.it/g/100/125", "Long Fu-Man-Chu Mustache", 8.00m, "005Fu" },
-                    { 6, "Short Fu-Man-Chu stick on mustache. Glue not included", "http://placebeard.it/g/100/125", "Short Fu-Man-Chu Mustache", 5.00m, "006FuS" },
-                    { 7, "Spray that allows for realistic looking 5'oclock shadow. Alcohol soluble.", "http://placebeard.it/g/100/125", "5'oclock Shadow Spray", 15.00m, "007Shadow" },
-                    { 8, "Glue for all stick on facial hair. Alcohol soluble.", "http://placebeard.it/g/100/125", "Facial Glue", 5.00m, "008Glue" },
-                    { 9, "Specially designed comb for facial hair.", "http://placebeard.it/g/100/125", "Facial Hair Comb", 5.00m, "009Comb" },
-                    { 10, "Stick on mutton chops. Glue not included", "http://placebeard.it/g/100/125", "Mutton Chops", 7.00m, "010Chops" }
+                    { 1, "Stick on beard and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/baron.png", "The Baron", 10.00m, "BEAR001" },
+                    { 2, "Stick on mustache and mutton-chops. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/butcher.png", "The Butcher", 8.00m, "MUTT001" },
+                    { 3, "Stick on beard and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/czar.png", "The Czar", 10.00m, "BEAR002" },
+                    { 4, "Stick on beard and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/dandy.png", "The Dandy", 10.00m, "BEAR003" },
+                    { 5, "Stick on beard and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/barrister.png", "The Barrister", 10.00m, "BEAR005" },
+                    { 6, "Stick on mustache and sideburns. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/duke.png", "The Duke", 5.00m, "MUST001" },
+                    { 7, "Stick on goatee and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/empereur.png", "The Empereur", 7.00m, "GOAT001" },
+                    { 8, "Stick on beard. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/farmer.png", "The Farmer", 8.00m, "BEAR006" },
+                    { 9, "Stick on mutton-chops and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/kaiser.png", "The Kaiser", 8.00m, "MUTT002" },
+                    { 10, "Stick on goatee and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/magician.png", "The Magician", 7.00m, "GOAT002" },
+                    { 11, "Stick on beard and mustache. Glue not included", "https://beardibilityblob.blob.core.windows.net/productimages/mariner.png", "The Mariner", 10.00m, "BEAR007" },
+                    { 12, "Glue for all stick on facial hair. Alcohol soluble.", "https://beardibilityblob.blob.core.windows.net/productimages/facial_glue.jpg", "Facial Glue", 5.00m, "ACCE001" },
+                    { 13, "Beard oil for every gentleman.", "https://beardibilityblob.blob.core.windows.net/productimages/beard_oil.jpg", "Gentlemen's Beard Oil", 5.00m, "GROO001" },
+                    { 14, "Specially designed comb and brush for facial hair.", "https://beardibilityblob.blob.core.windows.net/productimages/brush_set.jpg", "Comb and Brush Set", 8.00m, "GROO002" }
                 });
 
             migrationBuilder.CreateIndex(
