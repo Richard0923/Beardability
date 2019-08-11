@@ -19,7 +19,7 @@ namespace E_Commerce.Models.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<BasketItem> GetBasketById(int id);
+        Task<BasketItem> GetBasketItemById(int basketId, int productId);
 
         /// <summary>
         /// Grabs all the basket items in the database and converts them into a list.
@@ -39,14 +39,14 @@ namespace E_Commerce.Models.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task DeleteBasketItem(int id);
+        Task DeleteBasketItem(BasketItem basketItem);
 
         /// <summary>
         /// Finds the basket associated with the email given 
         /// </summary>
         /// <param name="email"></param>
         /// <returns>Returns the Basket with the email given</returns>
-        Basket FindBasketID(string email);
+        Task<Basket> FindBasketID(string email);
 
         /// <summary>
         /// Saves Changes async

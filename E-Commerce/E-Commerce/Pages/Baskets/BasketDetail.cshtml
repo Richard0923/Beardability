@@ -1,5 +1,5 @@
 ﻿@page  
-@model E_Commerce.Pages.Basket.BasketDetailModel
+@model E_Commerce.Pages.Baskets.BasketDetailModel
 @{ 
         Layout = "_HomePage";
     int counter = 0;
@@ -28,13 +28,16 @@
                     <img src="@basketItem.Image)" />
                     <p>Price: $@basketItem.Price)</p>
                     <form method="post">
-                        <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
+                        <input type="hidden" asp-for="@basketItem.BasketID" value="@basketItem.BasketID" name="basket" />
+                        <input type="hidden" asp-for="@basketItem.ProductID" value="@basketItem.ProductID" name="product" />
+
                         <label for="quanity">Quantity</label>
                         <input type="number" asp-for="@basketItem.Quanity" value="@basketItem.Quanity" name="quanity" min="1" />
                         <button type="submit">Update Quantity</button>
                     </form>
                     <form method="post" asp-page-handler="delete">
-                        <input type="hidden" asp-for="@basketItem.ID" value="@basketItem.ID" name="id" />
+                        <input type="hidden" asp-for="@basketItem.BasketID" value="@basketItem.BasketID" name="deletebasket" />
+                        <input type="hidden" asp-for="@basketItem.ProductID" value="@basketItem.ProductID" name="deleteproduct" />
                         <button type="submit">Delete From Basket</button>
                     </form>
                 </div>

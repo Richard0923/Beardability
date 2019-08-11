@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,8 +12,6 @@ namespace E_Commerce.Models
     /// </summary>
     public class BasketItem
     {
-        public int ID { get; set; }
-
         //Foreign Key of the Basket associated with
         //[ForeignKey("Basket")]
         public int BasketID { get; set; }
@@ -25,6 +24,7 @@ namespace E_Commerce.Models
 
         public string Sku { get; set; }
 
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
         public string Image { get; set; }

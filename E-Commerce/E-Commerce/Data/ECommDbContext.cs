@@ -26,7 +26,8 @@ namespace E_Commerce.Data
             //Composite Key Binding 
 
             modelBuilder.Entity<BasketItem>().HasKey(bi =>
-            new { bi.BasketID, bi.ProductID});
+            new { bi.BasketID, bi.ProductID });
+            
 
             modelBuilder.Entity<OrderItem>().HasKey(oi =>
             new { oi.ProductID, oi.OrderID });
