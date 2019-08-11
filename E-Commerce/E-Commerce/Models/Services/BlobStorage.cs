@@ -43,6 +43,8 @@ namespace E_Commerce.Models.Services
         {
             CloudBlockBlob blob = container.GetBlockBlobReference(fileName);
             blob.UploadFromFileAsync(filePath);
+
+            var blobUrl = blob.Uri.AbsoluteUri;
         }
     }
 }
