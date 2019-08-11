@@ -1,0 +1,39 @@
+﻿@page
+@model E_Commerce.Pages.Admin.ProductDetailModel
+@{
+
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Product Detail</title>
+    </head>
+    <body>
+        <h1>Product Detail</h1>
+        <div>
+            <form method="post" asp-page-handler="update">
+                <input type="hidden" asp-for="Product.ID" value="@Model.Product.ID" name="product" />
+                <label for="name">Name</label>
+                <input type="text" asp-for="Product.Name" value="@Model.Product.Name" name="name"/>
+                <label for="sku">SKU</label>
+                <input type="text" asp-for="Product.Sku" value="@Model.Product.Sku" name="sku"/>
+                <label for="price">Price</label>
+                <input type="number" asp-for="Product.Price" value="@Model.Product.Price" name="price"/>
+                <label for="description">Description</label>
+                <input type="text" asp-for="Product.Description" value="@Model.Product.Description" name="description"/>
+                <label for=" image">Image</label>
+                <input type="file" asp-for="Product.Image" name="image"/>
+
+                <button type="submit">Save</button>
+                <button type="submit">Delete Product</button>
+            </form>  
+        </div>
+    </body>
+    </html>
+}
+else
+{
+    throw new Exception("404 not found");
+}
