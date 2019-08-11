@@ -120,7 +120,7 @@ namespace E_Commerce.Pages.Admin
                 await _context.UpdateItemAsync(productid);
             }
 
-            return RedirectToPage();
+            return RedirectToPage("/ProductManager");
         }
 
         /// <summary>
