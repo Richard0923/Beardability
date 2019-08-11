@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace E_Commerce.Migrations
 {
-    public partial class tryingtfixdatabase : Migration
+    public partial class AddingOrdersTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -89,7 +89,6 @@ namespace E_Commerce.Migrations
                 {
                     ProductID = table.Column<int>(nullable: false),
                     OrderID = table.Column<int>(nullable: false),
-                    ID = table.Column<int>(nullable: false),
                     Quanity = table.Column<int>(nullable: false),
                     TotalItemPrice = table.Column<int>(nullable: false)
                 },

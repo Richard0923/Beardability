@@ -7,8 +7,6 @@ namespace E_Commerce.Models
 {
     public class OrderItem
     {
-        public int ID { get; set; }
-
         public int ProductID { get; set; }
 
         public int OrderID { get; set; }

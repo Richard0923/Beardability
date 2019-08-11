@@ -52,7 +52,7 @@ namespace E_Commerce.Pages.Baskets
             var idBasket = Request.Form["basket"];
             var idProduct = Request.Form["product"];
             int basketid = Convert.ToInt32(idBasket);
-            int productid = Convert.ToInt32(idBasket);
+            int productid = Convert.ToInt32(idProduct);
             //grabs the new quanity
             var formQuanity = Request.Form["quanity"];
             int quanity = Convert.ToInt32(formQuanity);
@@ -73,7 +73,7 @@ namespace E_Commerce.Pages.Baskets
             var idBasket = Request.Form["deletebasket"];
             var idProduct = Request.Form["deleteproduct"];
             int basketid = Convert.ToInt32(idBasket);
-            int productid = Convert.ToInt32(idBasket);
+            int productid = Convert.ToInt32(idProduct);
             BasketItem basketItem = await _basket.GetBasketItemById(basketid, productid);
             
             if(basketItem != null)

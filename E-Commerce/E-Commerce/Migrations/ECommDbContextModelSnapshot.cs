@@ -80,8 +80,6 @@ namespace E_Commerce.Migrations
 
                     b.Property<int>("OrderID");
 
-                    b.Property<int>("ID");
-
                     b.Property<int>("Quanity");
 
                     b.Property<int>("TotalItemPrice");
