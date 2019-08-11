@@ -9,6 +9,10 @@ h1 {
     margin-top: .5em;
 }
 
+img {
+    width: 30%;
+}
+
 input:focus {
     background-color: hsla(244, 100%, 49%, 0.57);
     color: whitesmoke;
