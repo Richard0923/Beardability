@@ -1,0 +1,13 @@
+﻿@page
+@model E_Commerce.Pages.Admin.AdminDashboardModel
+@{
+        Layout = "_AdminLayout";
+}
+@if (User.IsInRole("Admin"))
+{
+<h1>Admin dashboard</h1>
+
+}
+else {
+    throw new Exception("404 not found");
+}
