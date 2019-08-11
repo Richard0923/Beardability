@@ -21,14 +21,18 @@ namespace E_Commerce.Models.Services
             _context = context;
         }
 
-        public Task CreateItem(Product product)
+        public async Task CreateItem(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteItem(int id)
+        public async Task DeleteItem(int id)
         {
-            throw new NotImplementedException();
+            Product product = await GetItemByIDAsync(id);
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<Product>> GetAllItemsAsync()
@@ -41,9 +45,12 @@ namespace E_Commerce.Models.Services
             return await _context.Products.FirstOrDefaultAsync(a => a.ID == id);
         }
 
-        public Task UpdateItemAsync(int id)
+        public async Task UpdateItemAsync(int id)
         {
-            throw new NotImplementedException();
+            Product product = await GetItemByIDAsync(id);
+
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
         }
 
         public async Task AddBasketItem(BasketItem basketItem)
