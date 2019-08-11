@@ -23,6 +23,15 @@ namespace E_Commerce.Data
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Composite Key Binding 
+
+            modelBuilder.Entity<BasketItem>().HasKey(bi =>
+            new { bi.BasketID, bi.ProductID });
+            
+
+            modelBuilder.Entity<OrderItem>().HasKey(oi =>
+            new { oi.ProductID, oi.OrderID });
+
             //Product seeded data 
             modelBuilder.Entity<Product>().HasData(
 
@@ -242,6 +251,8 @@ namespace E_Commerce.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
     }
 }

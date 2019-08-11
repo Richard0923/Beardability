@@ -46,17 +46,17 @@ namespace E_Commerce.Pages.Shop
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task OnPost(int id )
+        public async Task<IActionResult> OnPost(int id )
         {
             Beard = await _context.GetItemByIDAsync(id);
 
             var user = User.Identity.Name;
             
-            var userBasket = _basket.FindBasketID(user);
+            Basket userBasket = await _basket.FindBasketID(user);
             
             if (ModelState.IsValid)
             {
-                var basketItem = new BasketItem
+                BasketItem newBasketItem = new BasketItem
                 {
                     ProductID = Beard.ID,
                     Quanity = BasketItem.Quanity,
@@ -66,9 +66,10 @@ namespace E_Commerce.Pages.Shop
                     Price = Beard.Price,
                     Image = Beard.Image
                 };
-               await _basket.CreateBasketItem(basketItem);
+               await _basket.CreateBasketItem(newBasketItem);
                
             }
+            return RedirectToPage("Shopping");
         }
     }
 }

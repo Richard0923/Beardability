@@ -11,7 +11,6 @@ namespace E_Commerce.Models
     /// </summary>
     public class Basket 
     {
-        //[ForeignKey("UserID")]
         public int ID { get; set; }
 
         public string Email { get; set; }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace E_Commerce.Pages.Basket
+namespace E_Commerce.Pages.Baskets
 {
     [Authorize]
     public class BasketDetailModel : PageModel
@@ -29,6 +29,8 @@ namespace E_Commerce.Pages.Basket
         [BindProperty]
         public BasketItem BasketItem { get; set; }
 
+        public Basket UserBasket { get; set; }
+
         /// <summary>
         /// Retrieves all BasketItems in user's Basket
         /// </summary>
@@ -36,6 +38,7 @@ namespace E_Commerce.Pages.Basket
         public async Task OnGet()
         {
             BasketItems = await _basket.GetAllBasketItems();
+            UserBasket = await _basket.FindBasketID(User.Identity.Name);
         }
 
         /// <summary>
@@ -43,29 +46,42 @@ namespace E_Commerce.Pages.Basket
         /// </summary>
         /// <param name="basketItem"></param>
         /// <returns></returns>
-        public async Task OnPost()
+        public async Task<IActionResult> OnPost()
         {
-            var formId = Request.Form["id"];
-            int id = Convert.ToInt32(formId);
+            //grabs the id's for the basketitem to update
+            var idBasket = Request.Form["basket"];
+            var idProduct = Request.Form["product"];
+            int basketid = Convert.ToInt32(idBasket);
+            int productid = Convert.ToInt32(idProduct);
+            //grabs the new quanity
             var formQuanity = Request.Form["quanity"];
             int quanity = Convert.ToInt32(formQuanity);
-
-            BasketItem basketItem = await _basket.GetBasketById(id);
+            //grabs the basket and assigns it the new quantity 
+            BasketItem basketItem = await _basket.GetBasketItemById(basketid, productid);
             basketItem.Quanity = quanity;
-
+            
             await _basket.UpdateBasketItem(basketItem);
+            return RedirectToPage();
         }
 
         /// <summary>
         /// Removes record of given basket item in basket
         /// </summary>
         /// <returns></returns>
-        public async Task OnPostDelete()
+        public async Task<IActionResult> OnPostDelete()
         {
-            var formId = Request.Form["id"];
-            int id = Convert.ToInt32(formId);
+            var idBasket = Request.Form["deletebasket"];
+            var idProduct = Request.Form["deleteproduct"];
+            int basketid = Convert.ToInt32(idBasket);
+            int productid = Convert.ToInt32(idProduct);
+            BasketItem basketItem = await _basket.GetBasketItemById(basketid, productid);
+            
+            if(basketItem != null)
+            {
+                await _basket.DeleteBasketItem(basketItem);
+            }
 
-            await _basket.DeleteBasketItem(id);
+            return RedirectToPage();
         }
 
     }

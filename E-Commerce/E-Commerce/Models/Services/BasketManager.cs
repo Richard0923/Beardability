@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Data;
 using E_Commerce.Models.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,9 @@ namespace E_Commerce.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteBasketItem(int basketItemId)
+        public async Task DeleteBasketItem(BasketItem basketItem)
         {
-            BasketItem basketItem = await GetBasketItemById(basketItemId);
             _context.BasketItems.Remove(basketItem);
-
             await _context.SaveChangesAsync();
         }
 
@@ -39,25 +38,22 @@ namespace E_Commerce.Models.Services
             return await _context.BasketItems.ToListAsync();
         }
 
-        public async Task<BasketItem> GetBasketItemById(int id)
+        public async Task<BasketItem> GetBasketItemById(int basketId, int productId)
         {
-            return await _context.BasketItems.FindAsync(id);
+            return await _context.BasketItems.FindAsync(basketId, productId);
         }
 
-        public async Task<BasketItem> GetBasketById(int id)
-        {
-            return await _context.BasketItems.FindAsync(id);
-        }
 
         public async Task UpdateBasketItem(BasketItem basketItem)
         {
+            
             _context.BasketItems.Update(basketItem);
             await _context.SaveChangesAsync();
         }
 
-       public Basket FindBasketID(string email)
+       public async Task<Basket> FindBasketID(string email)
         {
-            Basket basket = _context.Baskets.FirstOrDefault(e => e.Email == email);
+            Basket basket = await _context.Baskets.FirstOrDefaultAsync(e => e.Email == email);
             return basket;
         }
 
