@@ -30,5 +30,29 @@ namespace E_CommTests
 
             Assert.Equal("newtestemail@test.com", registerView.Email);
         }
+
+        [Fact]
+        public void CanGetFirstName()
+        {
+            RegisterViewModel registerView = new RegisterViewModel()
+            {
+                FirstName = "Harry"
+            };
+
+            Assert.Equal("Harry", registerView.FirstName);
+        }
+
+        [Fact]
+        public void CanSetFirstName()
+        {
+            RegisterViewModel registerView = new RegisterViewModel()
+            {
+                FirstName = "Harry"
+            };
+
+            registerView.FirstName = "James";
+
+            Assert.Equal("James", registerView.FirstName);
+        }
     }
 }
