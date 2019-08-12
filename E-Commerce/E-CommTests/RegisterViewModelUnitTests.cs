@@ -54,5 +54,30 @@ namespace E_CommTests
 
             Assert.Equal("James", registerView.FirstName);
         }
+
+        [Fact]
+        public void CanGetLastName()
+        {
+            RegisterViewModel registerView = new RegisterViewModel()
+            {
+                LastName = "Potter"
+            };
+
+            Assert.Equal("Potter", registerView.LastName);
+        }
+
+        [Fact]
+        public void CanSetLastName()
+        {
+            RegisterViewModel registerView = new RegisterViewModel()
+            {
+                LastName = "Potter"
+            };
+
+            registerView.LastName = "Weasley";
+
+            Assert.Equal("Weasley", registerView.LastName);
+        }
+
     }
 }
