@@ -53,7 +53,7 @@ namespace E_Commerce.Pages.Admin
         /// Update record of product with new details
         /// </summary>
         /// <returns></returns>
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost(BlobViewModel BlobVM)
         {
             var idProduct = Request.Form["product"];
             int productid = Convert.ToInt32(idProduct);
@@ -78,14 +78,14 @@ namespace E_Commerce.Pages.Admin
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await _blob.Image.CopyToAsync(stream);
+                    await BlobVM.Image.CopyToAsync(stream);
                 };
 
                 var container = await _blob.GetContainer("products");
 
                 // upload the image
-                _blob.UploadFile(container, Image.FileName, filePath);
-                CloudBlob blob = await _blob.GetBlob(Image.FileName, container.Name);
+                _blob.UploadFile(container, BlobVM.Image.FileName, filePath);
+                CloudBlob blob = await _blob.GetBlob(BlobVM.Image.FileName, container.Name);
                 string URL = blob.Uri.ToString();
 
                 product.Image = URL;
